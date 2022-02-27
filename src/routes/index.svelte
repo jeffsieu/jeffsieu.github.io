@@ -23,14 +23,26 @@
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
 </svelte:head>
 
-<article>
-  <section>
-    <div class="mdc-typography--headline2">My projects</div>
+<header>
+  <article>
+    <section class="centered">
+      <div>
+        <div class="mdc-typography--headline2">Hi, I'm Jeff Sieu!</div>
+        <div class="mdc-typography--headline4" style="margin-top: 1rem">Here, I showcase some of the things I have made/done.</div>
+      </div>
+    </section>
+  </article>
+</header>
+<article id="featuredProjects">
+  <section class="centered thin">
+    <div>
+      <div class="mdc-typography--headline2">My projects</div>
+    </div>
   </section>
   <div class="project-list">
     {#each featuredProjects as project}
-      <section style="background-color: {project.backgroundColor}" class="project-section">
-        <div class="project-section-container">
+      <section style="background-color: {project.backgroundColor}" class="project-section centered">
+        <div>
           <div class="project-image">
             <img alt={project.title} src="{project.image}">
           </div>
@@ -40,17 +52,8 @@
               <div class="mdc-typography--headline5">{project.subtitle}</div>
             </div>
             <div class="mdc-typography--headline6">{project.description}</div>
-            <div class="project-actions">
-              <button class="mdc-button mdc-button--raised mdc-button--icon-leading"
-                style="--mdc-theme-primary: {project.textColor}; --mdc-theme-on-primary: {project.backgroundColor}" on:click={() => window.open(project.link)}>
-                <i class="material-icons mdc-button__icon" aria-hidden="true">{project.title === 'Stops' ? 'open_in_new' : 'play_arrow'}</i>
-                <span class="mdc-button__label">{project.title === 'Stops' ? 'Google Play' : 'Try it out'}</span>
-              </button>
-              <button class="mdc-button mdc-button--outlined mdc-button--icon-leading" style="--mdc-theme-primary: {project.textColor}" on:click={() => window.open(project.githubLink)}>
-                <span class="mdc-button__ripple"></span>
-                <i class="material-icons mdc-button__icon" aria-hidden="true">code</i>
-                <span class="mdc-button__label">Source</span>
-              </button>
+            <div class="project-action">
+              <ProjectAction project={project}/>
             </div>
           </div>
         </div>
@@ -58,11 +61,21 @@
     {/each}
   </div>
 </article>
-
-
-<article id="otherProjects">
-  <section>
-    <div class="mdc-typography--headline2">Other projects</div>
+<article id="skills">
+  <section class="centered">
+    <div>
+      <div class="mdc-typography--headline2">Skills</div>
+      <ul style="padding-top: 2rem">
+        {#each skills as skill}
+          <li><div class="mdc-typography--headline4">{skill}</div></li>
+        {/each}
+      </ul>
+    </div>
+  </section>
+</article>
+<article id="otherProjects" style="background: #F2F2F2">
+  <section class="centered">
+    <div class="mdc-typography--headline2">Other projects I've worked on</div>
   </section>
   <div class="project-list">
     {#each otherProjects as project}
@@ -74,18 +87,15 @@
               <div class="mdc-typography--headline5">{project.subtitle}</div>
             </div>
             <div class="mdc-typography--headline6">{project.description}</div>
-            <button class="mdc-button mdc-button--raised mdc-button--icon-leading"
-            style="--mdc-theme-primary: {project.textColor}; --mdc-theme-on-primary: {project.backgroundColor}" on:click={() => window.open(project.githubLink)}>
-              <i class="material-icons mdc-button__icon" aria-hidden="true">open_in_new</i>
-              <span class="mdc-button__label">View</span>
-            </button>
+            <div class="project-action">
+              <ProjectAction project={project}/>
+            </div>
           </div>
         </div>
       </section>
     {/each}
   </div>
 </article>
-
 
 <style>
 
@@ -95,10 +105,8 @@
     --mdc-theme-on-primary: white;
   }
 
-  .mdc-button--outlined {
-    border-width: 2px;
-    border-radius: 5px;
-    color: var(--mdc-theme-primary);
+  li {
+    margin-inline-start: 1.5rem;
   }
 
   .project-image {
@@ -109,42 +117,52 @@
   .project-image img {
     width: 100%;
     object-fit: contain;
-    border-radius: 1em;
+    border-radius: 1rem;
   }
 
   .project-details {
     flex: 3;
   }
 
-  .project-details .mdc-button {
+  .project-action {
     margin-block-start: 1rem;
   }
 
   section {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     padding: 2rem;
+  }
+
+  section.thin > * {
+    padding-block: 3rem;
   }
 
   section > * {
     padding-block: 6rem;  
   }
 
-  .project-section-container {
+  section.centered {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  section.centered > * {
     max-width: 1200px;
     flex: 1;
+  }
+
+  .project-section > div {
+    display: flex;
     gap: 4rem;
   }
 
   #otherProjects .project-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(max(33%, 300px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(max(33%, 30em), 60em), 1fr));
   }
 
   @media (max-width: 750px) {
-    .project-section-container {
+    .project-section > * {
       flex-direction: column;
       padding-block: 2rem;
     }
@@ -155,7 +173,7 @@
   }
 
   @media (min-width: 751px) {
-    .project-section:nth-child(2n) .project-section-container {
+    .project-section:nth-child(2n) > * {
       flex-direction: row-reverse;
     }
   }
@@ -164,27 +182,12 @@
     margin-block-end: 2rem;
   }
 
-  .project-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 1em;
-  }
-
 </style>
 
 <script lang="ts">
-	type Project = {
-		title: string;
-		subtitle: string;
-		description: string;
-		link: string;
-    githubLink: string,
-		backgroundColor: string;
-		textColor: string;
-	};
-	type FeaturedProject = Project & {
-		image: string;
-	};
+  import ProjectAction from "$lib/ProjectAction.svelte";
+  import type {Project, FeaturedProject} from "$lib/project";
+
 
   const featuredProjects: FeaturedProject[] = [
     {
@@ -192,7 +195,7 @@
       subtitle: 'Flutter',
       description: 'A live bus timing app for buses in Singapore. Available on Google Play.',
       image: 'images/stops.png',
-      link: 'https://play.google.com/store/apps/details?id=com.jeffsieu.stops',
+      viewLink: 'https://play.google.com/store/apps/details?id=com.jeffsieu.stops',
       githubLink: 'https://github.com/jeffsieu/stops',
       backgroundColor: '#E9F5F7',
       textColor: '#3E3E3E',
@@ -202,7 +205,7 @@
       subtitle: 'Flutter',
       description: 'You control a block. Knock into others to transfer control. Escape with the main block.',
       image: 'images/blocked.png',
-      link: 'https://slide.jeffsieu.com',
+      demoLink: 'https://slide.jeffsieu.com',
       githubLink: 'https://github.com/jeffsieu/slide',
       backgroundColor: '#C2DFE2',
       textColor: '#28211A',
@@ -212,7 +215,7 @@
       subtitle: 'Flutter',
       description: 'Solitaire written in Flutter.',
       image: 'images/quards.png',
-      link: 'https://quards.jeffsieu.com',
+      demoLink: 'https://quards.jeffsieu.com',
       githubLink: 'https://github.com/jeffsieu/quards',
       backgroundColor: '#F6FFF6',
       textColor: '#2B3237',
@@ -222,7 +225,7 @@
       subtitle: 'Flutter',
       description: 'Test your typing speed with this typing test.',
       image: 'images/another_typing_test.png',
-      link: 'https://type.jeffsieu.com',
+      demoLink: 'https://type.jeffsieu.com',
       githubLink: 'https://github.com/jeffsieu/type',
       backgroundColor: '#FFE0A6',
       textColor: '#27127B',
@@ -231,31 +234,87 @@
 
   const otherProjects: Project[] = [
     {
+      title: 'NUS Computing Club Website',
+      subtitle: 'React with Gatsby',
+      description: 'The website for NUS Students\' Computing Club. Made while I was the IT Secretary there.',
+      viewLink: 'https://nuscomputing.jeffsieu.com',
+      githubLink: 'https://github.com/jeffsieu/nuscomputing',
+      backgroundColor: '#28378F',
+      textColor: '#EFEFEF',
+    },
+    {
       title: 'MIPS Converter',
       subtitle: 'Svelte with Typescript',
       description: 'Converts MIPS instructions to and from hex/binary.',
-      link: 'https://mips-converter.jeffsieu.com',
+      demoLink: 'https://mips-converter.jeffsieu.com',
       githubLink: 'https://github.com/jeffsieu/mips-converter',
-      backgroundColor: '#3E3E3E',
-      textColor: '#EFEFEF',
+      backgroundColor: '#EFEFEF',
+      textColor: '#2E394D',
     },
     {
       title: 'py-sudoku',
       subtitle: 'Python',
       description: 'A python package that solves sudoku puzzles.',
-      link: 'https://pypi.org/project/py-sudoku/',
+      viewLink: 'https://pypi.org/project/py-sudoku/',
       githubLink: 'https://github.com/jeffsieu/py-sudoku',
-      backgroundColor: '#EFEFEF',
-      textColor: '#3E3E3E',
+      backgroundColor: '#006DAD',
+      textColor: '#FFDF76',
     },
     {
       title: 'txthlpr',
       subtitle: 'React with Typescript',
-      description: 'Perform repetitive formatting tasks on text without the pain of repetition. Like CyberChef but more generalized.',
-      link: 'https://txthlpr.jeffsieu.com',
+      description: 'Perform repetitive formatting tasks on text without the pain of repetition.',
+      demoLink: 'https://txthlpr.jeffsieu.com',
       githubLink: 'https://github.com/jeffsieu/txthlpr',
-      backgroundColor: '#3E3E3E',
-      textColor: '#EFEFEF',
-    }
+      backgroundColor: '#201B2D',
+      textColor: '#FFDF76',
+    },
+    {
+      title: 'monke',
+      subtitle: 'Windows Forms',
+      description: 'Add mechanical key switch noises to your boring membrane keyboard. Done for fun as a hackathon submission to Hack&Roll 2022.',
+      viewLink: 'https://devpost.com/software/monke-jbdg0v',
+      githubLink: 'https://github.com/jeffsieu/monke',
+      backgroundColor: '#EEBED3',
+      textColor: '#541F38',
+    },
+    {
+      title: 'sprintf',
+      subtitle: 'p5.js',
+      description: 'An accessibility-first efficient input alternative. Created for NUSH Hack.',
+      viewLink: 'https://devpost.com/software/4-way-keyboard',
+      demoLink: 'https://orppra.github.io/sprintf',
+      githubLink: 'https://github.com/orppra/sprintf',
+      backgroundColor: '#d4cef5',
+      textColor: '#082602',
+    },
+    {
+      title: 'NUSMods Timetabler',
+      subtitle: 'React',
+      description: 'Generate timetables for modules in National University of Singapore. Created for Hack&Roll 2021.',
+      viewLink: 'https://devpost.com/software/time-tabler',
+      githubLink: 'https://github.com/jeffsieu/timetabler',
+      backgroundColor: '#FF9485',
+      textColor: '#222324',
+    },
+    {
+      title: 'Ping Pong Warz',
+      subtitle: 'three.js',
+      description: 'Use your phone as a controller to play ping pong on your machine. Created for iNTUition v5.0.',
+      viewLink: 'https://devpost.com/software/ping-pong-warz',
+      githubLink: 'https://github.com/Enigmatrix/ping-pong-warz',
+      backgroundColor: '#CEF5DD',
+      textColor: '#0A3002',
+    },
+  ];
+
+  const skills = [
+    'Android SDK',
+    'Flutter development',
+    'Web with React',
+    'Python',
+    'pandas',
+    'Java',
+    'JavaScript',
   ];
 </script>
