@@ -158,7 +158,7 @@
 
   #otherProjects .project-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(max(33%, 30em), 60em), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(max(33%, 30em), 1fr));
   }
 
   @media (max-width: 750px) {
