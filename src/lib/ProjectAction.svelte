@@ -1,4 +1,4 @@
-<div class="project-actions">
+<div class={$$props.class}>
   {#if project.demoLink}
     <a class="mdc-button mdc-button--raised mdc-button--icon-leading" href={project.demoLink} target="_blank"
       style="--mdc-theme-primary: {project.textColor}; --mdc-theme-on-primary: {project.backgroundColor}">
@@ -21,7 +21,7 @@
 </div>
 
 <script lang="ts">
-  import type {Project} from "$lib/project";
+  import type {Project} from "$lib/types";
 
   export let project: Project;
 </script>

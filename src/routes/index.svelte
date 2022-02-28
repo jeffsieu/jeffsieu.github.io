@@ -1,12 +1,11 @@
 <svelte:head>
   <title>Jeff Sieu</title>
+  <meta name="description" content="Hi, I'm Jeff Sieu!. I enjoy experimenting with UI/UX design." />
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
+      
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -24,47 +23,38 @@
 </svelte:head>
 
 <header>
-  <article>
-    <section class="centered">
-      <div>
-        <div class="mdc-typography--headline2">Hi, I'm Jeff Sieu!</div>
-        <div class="mdc-typography--headline4" style="margin-top: 1rem">Here, I showcase some of the things I have made/done.</div>
+  <article id="intro">
+    <section class="centered split">
+      <img id="mainImage" alt="Jeff Sieu" src="images/jeffsieu.jpg">
+      <div id="mainTitle">
+        <h1 class="mdc-typography--headline3">Hi, I'm Jeff Sieu!</h1>
+        <p class="mdc-typography--headline5" style="margin-top: 4rem">I enjoy experimenting with UI/UX design.</p>
+        <p class="mdc-typography--headline5" style="margin-top: 1rem">Here, I showcase some of the things I have made/done.</p>
       </div>
     </section>
   </article>
 </header>
 <article id="featuredProjects">
   <section class="centered thin">
-    <div>
-      <div class="mdc-typography--headline2">My projects</div>
-    </div>
+    <h2 class="mdc-typography--headline3">My projects</h2>
   </section>
   <div class="project-list">
     {#each featuredProjects as project}
-      <section style="background-color: {project.backgroundColor}" class="project-section centered">
-        <div>
+      <div class="project-background" style="background-color: {project.backgroundColor}" >
+        <section class="project-section split centered">
           <div class="project-image">
             <img alt={project.title} src="{project.image}">
           </div>
-          <div class="project-details">
-            <div class="title-section" style="color: {project.textColor};">
-              <div class="mdc-typography--headline3">{project.title}</div>
-              <div class="mdc-typography--headline5">{project.subtitle}</div>
-            </div>
-            <div class="mdc-typography--headline6">{project.description}</div>
-            <div class="project-action">
-              <ProjectAction project={project}/>
-            </div>
-          </div>
-        </div>
-      </section>
+          <ProjectDetails project={project} class="project-details"/>
+        </section>
+      </div>
     {/each}
   </div>
 </article>
 <article id="skills">
   <section class="centered">
     <div>
-      <div class="mdc-typography--headline2">Skills</div>
+      <h2 class="mdc-typography--headline3">Skills</h2>
       <ul style="padding-top: 2rem">
         {#each skills as skill}
           <li><div class="mdc-typography--headline4">{skill}</div></li>
@@ -75,30 +65,18 @@
 </article>
 <article id="otherProjects" style="background: #F2F2F2">
   <section class="centered">
-    <div class="mdc-typography--headline2">Other projects I've worked on</div>
+    <h2 class="mdc-typography--headline3">Other projects I've worked on</h2>
   </section>
   <div class="project-list">
     {#each otherProjects as project}
       <section style="background-color: {project.backgroundColor}" class="project-section">
-        <div class="project-section-container">
-          <div class="project-details" style="color: {project.textColor}">
-            <div class="title-section">
-              <div class="mdc-typography--headline3">{project.title}</div>
-              <div class="mdc-typography--headline5">{project.subtitle}</div>
-            </div>
-            <div class="mdc-typography--headline6">{project.description}</div>
-            <div class="project-action">
-              <ProjectAction project={project}/>
-            </div>
-          </div>
-        </div>
+        <ProjectDetails project={project} class="project-details"/>
       </section>
     {/each}
   </div>
 </article>
 
 <style>
-
   :root {
     --mdc-typography-font-family: 'Josefin Sans', sans-serif;
     --mdc-theme-primary: black;
@@ -107,6 +85,21 @@
 
   li {
     margin-inline-start: 1.5rem;
+  }
+
+  #mainImage {
+    flex: 0;
+    object-fit: cover;
+    max-width: min(20rem, 33%);
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    max-height: 50vh;
+    border-radius: 1rem;
+  }
+
+  #mainTitle {
+    flex: 2;
   }
 
   .project-image {
@@ -120,38 +113,30 @@
     border-radius: 1rem;
   }
 
-  .project-details {
+  #featuredProjects :global(.project-details) {
     flex: 3;
-  }
-
-  .project-action {
-    margin-block-start: 1rem;
   }
 
   section {
     padding: 2rem;
   }
 
-  section.thin > * {
+  section.thin {
     padding-block: 3rem;
   }
 
-  section > * {
+  section {
     padding-block: 6rem;  
   }
 
   section.centered {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  section.centered > * {
     max-width: 1200px;
     flex: 1;
+    margin: auto;
   }
 
-  .project-section > div {
+  .split {
     display: flex;
     gap: 4rem;
   }
@@ -162,31 +147,36 @@
   }
 
   @media (max-width: 750px) {
-    .project-section > * {
+    .split {
       flex-direction: column;
       padding-block: 2rem;
+      gap: 2rem;
     }
 
     .project-image {
       max-width: max-content;
     }
-  }
 
-  @media (min-width: 751px) {
-    .project-section:nth-child(2n) > * {
-      flex-direction: row-reverse;
+    #mainImage {
+      max-width: 20rem;
     }
   }
 
-  .project-section .title-section {
-    margin-block-end: 2rem;
+  @media (min-width: 751px) {
+    #featuredProjects .project-list > :nth-child(2n) .project-section {
+      flex-direction: row-reverse;
+    }
+
+    #intro > section {
+      flex-direction: row-reverse;
+    }
   }
 
 </style>
 
 <script lang="ts">
-  import ProjectAction from "$lib/ProjectAction.svelte";
-  import type {Project, FeaturedProject} from "$lib/project";
+  import ProjectDetails from "$lib/ProjectDetails.svelte";
+  import type {Project, FeaturedProject} from "$lib/types";
 
 
   const featuredProjects: FeaturedProject[] = [
@@ -211,7 +201,7 @@
       textColor: '#28211A',
     },
     {
-      title: 'Quards',
+      title: 'quards',
       subtitle: 'Flutter',
       description: 'Solitaire written in Flutter.',
       image: 'images/quards.png',
