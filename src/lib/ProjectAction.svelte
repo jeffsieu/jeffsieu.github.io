@@ -30,7 +30,7 @@
   .project-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 1em;
+    gap: 1em;
   }
 
   .mdc-button--outlined {
