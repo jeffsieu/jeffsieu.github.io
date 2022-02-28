@@ -186,7 +186,7 @@
       description: 'A live bus timing app for buses in Singapore. Available on Google Play.',
       image: 'images/stops.png',
       viewLink: 'https://play.google.com/store/apps/details?id=com.jeffsieu.stops',
-      githubLink: 'https://github.com/jeffsieu/stops',
+      githubLink: 'https://github.com/jeffsieu/stops-flutter',
       backgroundColor: '#E9F5F7',
       textColor: '#3E3E3E',
     },
