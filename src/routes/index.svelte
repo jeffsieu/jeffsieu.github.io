@@ -163,7 +163,7 @@
   }
 
   @media (min-width: 751px) {
-    #featuredProjects .project-list > :nth-child(2n) .project-section {
+    :global(#featuredProjects .project-list > :nth-child(2n) .project-section) {
       flex-direction: row-reverse;
     }
 
