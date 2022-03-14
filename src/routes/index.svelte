@@ -196,7 +196,7 @@
       description: 'You control a block. Knock into others to transfer control. Escape with the main block.',
       image: 'images/blocked.png',
       demoLink: 'https://slide.jeffsieu.com',
-      githubLink: 'https://github.com/jeffsieu/slide',
+      githubLink: 'https://github.com/jeffsieu/blocked',
       backgroundColor: '#C2DFE2',
       textColor: '#28211A',
     },
