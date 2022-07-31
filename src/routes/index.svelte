@@ -3,7 +3,8 @@
 	import ShadowButton from '$lib/ShadowButton.svelte';
 	import type { Project, FeaturedProject } from '$lib/types';
 
-	export let y: number;
+	let y: number;
+	let navbarHeight: number;
 
 	const featuredProjects: FeaturedProject[] = [
 		{
@@ -288,9 +289,15 @@
 
 	<link rel="stylesheet" href="/reset.css" />
 	<link rel="stylesheet" href="/global.css" />
+
+  {@html `<style>:root{--navbar-height:${navbarHeight}px;}</style>`}
 </svelte:head>
 
-<div class="nav-wrapper" style="--border-color: {y > 50 ? 'rgba(0,0,0,0.75)' : 'transparent'}">
+<div
+	class="nav-wrapper"
+	style="--border-color: {y > 50 ? 'rgba(0,0,0,0.75)' : 'transparent'}"
+	bind:clientHeight={navbarHeight}
+>
 	<nav class="main-nav section centered nav-section">
 		<ul role="navigation">
 			<img src="images/logo.svg" alt="" width="36" height="36" />
@@ -305,6 +312,7 @@
 	</nav>
 </div>
 <main id="id">
+  {navbarHeight}
 	<article id="intro">
 		<section class="section centered split">
 			<img id="mainImage" alt="" src="images/jeffsieu.jpg" />
@@ -376,8 +384,7 @@
 		</div>
 	</article>
 </main>
-<svelte:window bind:scrollY={y} />
-
+<svelte:window bind:scrollY={y} style="--navbar-height: {navbarHeight}" />
 <style>
 	:root {
 		--font-family: 'Poppins', sans-serif;
@@ -399,7 +406,7 @@
 
 		font-size: var(--fs-regular);
 		scroll-behavior: smooth;
-		scroll-padding-top: 74px;
+		scroll-padding-top: var(--navbar-height);
 	}
 
 	.fw-regular {
@@ -503,7 +510,6 @@
 		gap: 1rem;
 		align-items: center;
 		padding: 1rem;
-		/* border: 1px solid red; */
 	}
 
 	.skill-list {
