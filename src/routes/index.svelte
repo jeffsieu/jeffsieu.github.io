@@ -312,7 +312,6 @@
 	</nav>
 </div>
 <main id="id">
-  {navbarHeight}
 	<article id="intro">
 		<section class="section centered split">
 			<img id="mainImage" alt="" src="images/jeffsieu.jpg" />
