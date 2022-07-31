@@ -1,27 +1,25 @@
 <div class={$$props.class}>
   {#if project.demoLink}
-    <a class="mdc-button mdc-button--raised mdc-button--icon-leading" href={project.demoLink} target="_blank"
-      style="--mdc-theme-primary: {project.textColor}; --mdc-theme-on-primary: {project.backgroundColor}">
-      <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
+    <ShadowButton href={project.demoLink} {...project}>
+      <i class="material-icons" aria-hidden="true">play_arrow</i>
       <span class="mdc-button__label">Try it out</span>
-    </a>
+    </ShadowButton>
   {/if}
   {#if project.viewLink}
-    <a class="mdc-button mdc-button--raised mdc-button--icon-leading" href={project.viewLink} target="_blank"
-      style="--mdc-theme-primary: {project.textColor}; --mdc-theme-on-primary: {project.backgroundColor}">
-      <i class="material-icons mdc-button__icon" aria-hidden="true">open_in_new</i>
+    <ShadowButton href={project.viewLink} {...project}>
+      <i class="material-icons" aria-hidden="true">open_in_new</i>
       <span class="mdc-button__label">View</span>
-    </a>
+    </ShadowButton>
   {/if}
-  <a class="mdc-button mdc-button--outlined mdc-button--icon-leading" style="--mdc-theme-primary: {project.textColor}" href={project.githubLink}>
-    <span class="mdc-button__ripple"></span>
-    <i class="material-icons mdc-button__icon" aria-hidden="true">code</i>
-    <span class="mdc-button__label">Source</span>
-  </a>
+  <ShadowButton href={project.githubLink} {...project} >
+    <i class="material-icons" aria-hidden="true">code</i>
+    Source
+  </ShadowButton>
 </div>
 
 <script lang="ts">
   import type {Project} from "$lib/types";
+  import ShadowButton from "./ShadowButton.svelte";
 
   export let project: Project;
 </script>
