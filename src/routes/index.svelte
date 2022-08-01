@@ -306,8 +306,10 @@
 >
 	<nav class="main-nav section centered nav-section">
 		<ul role="navigation">
-			<li>
+			<li aria-hidden>
 				<img src="images/logo.svg" alt="" width="36" height="36" />
+			</li>
+			<li>
 				<a class="navbar-icon fs-h3 fw-bold" href="#intro" alt="Home">
 					<div aria-hidden="true">jeff</div>
 					<div aria-hidden="true">sieu</div>
