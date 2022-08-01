@@ -4,7 +4,7 @@
 	import type { Project, FeaturedProject } from '$lib/types';
 
 	import AnotherTypingTestImg from '$lib/assets/another_typing_test.webp';
-	import BlockedImg from '$lib/assets/blocked.webp';	
+	import BlockedImg from '$lib/assets/blocked.webp';
 	import QuardsImg from '$lib/assets/quards.webp';
 	import StopsImg from '$lib/assets/stops.webp';
 	import JeffSieuImg from '$lib/assets/jeff_sieu.webp';
@@ -281,7 +281,10 @@
 	<meta name="description" content="Hi, I'm Jeff Sieu!. I enjoy experimenting with UI/UX design." />
 
 	<!-- Fonts -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+	/>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -294,34 +297,28 @@
 	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
 
 	<link rel="stylesheet" href="/reset.css" />
-	<link rel="stylesheet" href="/global.css" />
 
-  {@html `<style>:root{--navbar-height:${navbarHeight}px;}</style>`}
+	{@html `<style ✂prettier:content✂="OnJvb3R7LS1uYXZiYXItaGVpZ2h0OiR7bmF2YmFySGVpZ2h0fXB4O30=" ✂prettier:content✂=""></style>`}
 </svelte:head>
 
 <div
 	class="nav-wrapper"
-	style="--border-color: {y > 50 ? 'rgba(0,0,0,0.75)' : 'transparent'}"
+	style="--border-color: {y > 48 ? 'rgba(0,0,0,0.75)' : 'transparent'}"
 	bind:clientHeight={navbarHeight}
 >
 	<nav class="main-nav section centered nav-section">
 		<ul role="navigation">
-			<li aria-hidden>
-				<img src="images/logo.svg" alt="" width="36" height="36" />
-			</li>
 			<li>
-				<a class="navbar-icon fs-h3 fw-bold" href="#intro" alt="Home">
-					<div aria-hidden="true">jeff</div>
-					<div aria-hidden="true">sieu</div>
-				</a>
+				<a href="#main"><img src="images/logo.svg" alt="Home" width="36" height="36" /></a>
 			</li>
+			<li aria-hidden="true" />
 			<li><ShadowButton href="#featuredProjects" target="_self">My projects</ShadowButton></li>
 			<li><ShadowButton href="#skills" target="_self">Skills/tools</ShadowButton></li>
 			<li><ShadowButton href="#otherProjects" target="_self">Other projects</ShadowButton></li>
 		</ul>
 	</nav>
 </div>
-<main id="id">
+<main id="main">
 	<article id="intro">
 		<section class="section centered split">
 			<img id="mainImage" alt="" src={JeffSieuImg} />
@@ -394,6 +391,7 @@
 	</article>
 </main>
 <svelte:window bind:scrollY={y} style="--navbar-height: {navbarHeight}" />
+
 <style>
 	:root {
 		--font-family: 'Poppins', sans-serif;
@@ -416,6 +414,10 @@
 		font-size: var(--fs-regular);
 		scroll-behavior: smooth;
 		scroll-padding-top: var(--navbar-height);
+	}
+
+	:global(.material-symbols-sharp) {
+		font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
 	}
 
 	.fw-regular {
@@ -557,20 +559,6 @@
 		transition: all 0.2s ease-in-out;
 	}
 
-	.navbar-icon {
-		display: flex;
-		text-decoration: none;
-		color: black;
-		margin-inline-end: 2rem;
-	}
-
-	.navbar-icon > :first-child {
-		font-weight: var(--fw-medium);
-	}
-	.navbar-icon > :nth-child(2) {
-		transform: translateY(4px);
-	}
-
 	@media (max-width: 750px) {
 		.split {
 			flex-direction: column;
@@ -584,10 +572,6 @@
 
 		#mainImage {
 			max-width: 20rem;
-		}
-
-		.navbar-icon {
-			display: none;
 		}
 	}
 

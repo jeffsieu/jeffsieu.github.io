@@ -12,7 +12,7 @@
 			textColor={project.textColor}
 			backgroundColor={project.backgroundColor}
 		>
-			<i class="material-icons" aria-hidden="true">play_arrow</i>
+			<span class="material-symbols-sharp" aria-hidden="true">play_arrow</span>
 			Try it out
 		</ShadowButton>
 	{/if}
@@ -22,7 +22,7 @@
 			textColor={project.textColor}
 			backgroundColor={project.backgroundColor}
 		>
-			<i class="material-icons" aria-hidden="true">open_in_new</i>
+		<span class="material-symbols-sharp" aria-hidden="true">open_in_new</span>
 			View
 		</ShadowButton>
 	{/if}
@@ -31,7 +31,7 @@
 		textColor={project.textColor}
 		backgroundColor={project.backgroundColor}
 	>
-		<i class="material-icons" aria-hidden="true">code</i>
+	<span class="material-symbols-sharp" aria-hidden="true">code</span>
 		Source
 	</ShadowButton>
 </div>
