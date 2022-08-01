@@ -3,6 +3,12 @@
 	import ShadowButton from '$lib/ShadowButton.svelte';
 	import type { Project, FeaturedProject } from '$lib/types';
 
+	import AnotherTypingTestImg from '$lib/assets/another_typing_test.webp';
+	import BlockedImg from '$lib/assets/blocked.webp';	
+	import QuardsImg from '$lib/assets/quards.webp';
+	import StopsImg from '$lib/assets/stops.webp';
+	import JeffSieuImg from '$lib/assets/jeff_sieu.webp';
+
 	let y: number;
 	let navbarHeight: number;
 
@@ -11,7 +17,7 @@
 			title: 'Stops',
 			subtitle: 'Flutter',
 			description: 'A live bus timing app for buses in Singapore. Available on Google Play.',
-			image: 'images/stops.png',
+			image: StopsImg,
 			viewLink: 'https://play.google.com/store/apps/details?id=com.jeffsieu.stops',
 			githubLink: 'https://github.com/jeffsieu/stops-flutter',
 			backgroundColor: '#E9F5F7',
@@ -22,7 +28,7 @@
 			subtitle: 'Flutter',
 			description:
 				'You control a block. Knock into others to transfer control. Escape with the main block.',
-			image: 'images/blocked.png',
+			image: BlockedImg,
 			demoLink: 'https://slide.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/blocked',
 			backgroundColor: '#C2DFE2',
@@ -32,7 +38,7 @@
 			title: 'quards',
 			subtitle: 'Flutter',
 			description: 'Solitaire written in Flutter.',
-			image: 'images/quards.png',
+			image: QuardsImg,
 			demoLink: 'https://quards.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/quards',
 			backgroundColor: '#F6FFF6',
@@ -42,7 +48,7 @@
 			title: 'another typing test',
 			subtitle: 'Flutter',
 			description: 'Test your typing speed with this typing test.',
-			image: 'images/another_typing_test.png',
+			image: AnotherTypingTestImg,
 			demoLink: 'https://type.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/type',
 			backgroundColor: '#FFE0A6',
@@ -76,7 +82,7 @@
 			description: 'A python package that solves sudoku puzzles.',
 			viewLink: 'https://pypi.org/project/py-sudoku/',
 			githubLink: 'https://github.com/jeffsieu/py-sudoku',
-			backgroundColor: '#006DAD',
+			backgroundColor: '#005D94',
 			textColor: '#FFDF76'
 		},
 		{
@@ -300,11 +306,13 @@
 >
 	<nav class="main-nav section centered nav-section">
 		<ul role="navigation">
-			<img src="images/logo.svg" alt="" width="36" height="36" />
-			<a class="navbar-icon fs-h3 fw-bold" href="#intro" alt="Home">
-				<div aria-hidden="true">jeff</div>
-				<div aria-hidden="true">sieu</div>
-			</a>
+			<li>
+				<img src="images/logo.svg" alt="" width="36" height="36" />
+				<a class="navbar-icon fs-h3 fw-bold" href="#intro" alt="Home">
+					<div aria-hidden="true">jeff</div>
+					<div aria-hidden="true">sieu</div>
+				</a>
+			</li>
 			<li><ShadowButton href="#featuredProjects" target="_self">My projects</ShadowButton></li>
 			<li><ShadowButton href="#skills" target="_self">Skills/tools</ShadowButton></li>
 			<li><ShadowButton href="#otherProjects" target="_self">Other projects</ShadowButton></li>
@@ -314,7 +322,7 @@
 <main id="id">
 	<article id="intro">
 		<section class="section centered split">
-			<img id="mainImage" alt="" src="images/jeffsieu.jpg" />
+			<img id="mainImage" alt="" src={JeffSieuImg} />
 			<div id="mainTitle">
 				<h1 class="fw-regular fs-h1">Hi, I'm Jeff Sieu!</h1>
 				<p class="" style="margin-top: 4rem">

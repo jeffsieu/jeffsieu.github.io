@@ -13,7 +13,7 @@
 			backgroundColor={project.backgroundColor}
 		>
 			<i class="material-icons" aria-hidden="true">play_arrow</i>
-			<span class="mdc-button__label">Try it out</span>
+			Try it out
 		</ShadowButton>
 	{/if}
 	{#if project.viewLink}
@@ -23,7 +23,7 @@
 			backgroundColor={project.backgroundColor}
 		>
 			<i class="material-icons" aria-hidden="true">open_in_new</i>
-			<span class="mdc-button__label">View</span>
+			View
 		</ShadowButton>
 	{/if}
 	<ShadowButton
@@ -41,11 +41,5 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1em;
-	}
-
-	.mdc-button--outlined {
-		border-width: 2px;
-		border-radius: 5px;
-		color: var(--mdc-theme-primary);
 	}
 </style>
