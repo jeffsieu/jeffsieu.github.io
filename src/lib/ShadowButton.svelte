@@ -25,7 +25,13 @@ a {
   transform: translate(calc(-1 * var(--offset)), calc(-1 * var(--offset)));
   box-shadow: calc(4px + var(--offset)) calc(4px + var(--offset)) 0px 0px var(--text-color);
   
-  transition: all 0.2s;
+  transition: color 0.2s, background-color 0.2s, border 0.2s, transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition: none;
+  }
 }
 
 a:active,

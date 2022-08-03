@@ -428,6 +428,12 @@
 		scroll-padding-top: var(--navbar-height);
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		:root {
+			scroll-behavior: auto;
+		}
+	}
+
 	:global(.material-symbols-sharp) {
 		font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
 	}
