@@ -11,6 +11,13 @@
 
 	let y: number;
 	let navbarHeight: number;
+	$: navbarHeightStyle = `
+		<style>
+			:root{
+					--navbar-height: ${navbarHeight}px;
+			}
+		</style>
+	`;
 
 	const featuredProjects: FeaturedProject[] = [
 		{
@@ -298,7 +305,7 @@
 
 	<link rel="stylesheet" href="/reset.css" />
 
-	{@html `<style ✂prettier:content✂="OnJvb3R7LS1uYXZiYXItaGVpZ2h0OiR7bmF2YmFySGVpZ2h0fXB4O30=" ✂prettier:content✂=""></style>`}
+	{@html navbarHeightStyle}
 </svelte:head>
 
 <div
@@ -309,7 +316,12 @@
 	<nav class="main-nav section centered nav-section">
 		<ul role="navigation">
 			<li>
-				<a href="#main"><img src="images/logo.svg" alt="Home" width="36" height="36" /></a>
+				<a
+					href="#main"
+					on:click={() => {
+						y = 0;
+					}}><img src="images/logo.svg" alt="Home" width="36" height="36" /></a
+				>
 			</li>
 			<li aria-hidden="true" />
 			<li><ShadowButton href="#featuredProjects" target="_self">My projects</ShadowButton></li>
