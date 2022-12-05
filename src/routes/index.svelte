@@ -154,7 +154,7 @@
 			title: 'AEGIS',
 			subtitle: 'React, Sequelize, Node.js',
 			description:
-				'An algorithmically enhanced scheduling tool. Developed for the Republic of Singapore Air Force.',
+				'An algorithmically enhanced scheduling tool for assigning monthly shifts, taking into account role and operational constraints.',
 			githubLink: 'https://github.com/jeffsieu/AEGIS-frontend',
 			backgroundColor: '#2C4B9C',
 			textColor: '#FFFFFF'
