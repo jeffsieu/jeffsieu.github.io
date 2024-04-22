@@ -19,13 +19,17 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '16'
+          node-version: '18'
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
 
       - name: Install NPM packages
-        run: npm install
+        run: pnpm install
 
       - name: Build project
-        run: npm run build
+        run: pnpm build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
