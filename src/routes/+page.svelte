@@ -435,7 +435,11 @@
 	}
 
 	:global(.material-symbols-sharp) {
-		font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+		font-variation-settings:
+			'FILL' 1,
+			'wght' 600,
+			'GRAD' 0,
+			'opsz' 48;
 	}
 
 	.fw-regular {
