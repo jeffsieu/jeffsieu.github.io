@@ -4,6 +4,7 @@
 	import type { Project, FeaturedProject } from '$lib/types';
 
 	import AnotherTypingTestImg from '$lib/assets/another_typing_test.webp';
+	import AlgoSandboxImg from '$lib/assets/algo_sandbox.webp';
 	import BlockedImg from '$lib/assets/blocked.webp';
 	import QuardsImg from '$lib/assets/quards.webp';
 	import StopsImg from '$lib/assets/stops.webp';
@@ -21,6 +22,17 @@
 
 	const featuredProjects: FeaturedProject[] = [
 		{
+			title: 'AlgoSandbox',
+			subtitle: 'Next',
+			description:
+				'An algorithm exploration platform allowing flexible and extensive step-by-step visualization of algorithms. Created for my Final Year Project in NUS.',
+			image: AlgoSandboxImg,
+			viewLink: 'https://algosandbox.com',
+			githubLink: 'https://github.com/AlgoSandbox/AlgoSandbox',
+			backgroundColor: '#0C346F',
+			textColor: '#FFE4C5',
+		},
+		{
 			title: 'Stops',
 			subtitle: 'Flutter',
 			description: 'A live bus timing app for buses in Singapore. Available on Google Play.',
@@ -28,7 +40,7 @@
 			viewLink: 'https://play.google.com/store/apps/details?id=com.jeffsieu.stops',
 			githubLink: 'https://github.com/jeffsieu/stops-flutter',
 			backgroundColor: '#E9F5F7',
-			textColor: '#3E3E3E'
+			textColor: '#3E3E3E',
 		},
 		{
 			title: 'Blocked',
@@ -39,7 +51,7 @@
 			demoLink: 'https://blocked.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/blocked',
 			backgroundColor: '#C2DFE2',
-			textColor: '#28211A'
+			textColor: '#28211A',
 		},
 		{
 			title: 'quards',
@@ -49,7 +61,7 @@
 			demoLink: 'https://quards.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/quards',
 			backgroundColor: '#F6FFF6',
-			textColor: '#2B3237'
+			textColor: '#2B3237',
 		},
 		{
 			title: 'another typing test',
@@ -59,11 +71,20 @@
 			demoLink: 'https://type.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/type',
 			backgroundColor: '#FFE0A6',
-			textColor: '#27127B'
-		}
+			textColor: '#27127B',
+		},
 	];
 
 	const otherProjects: Project[] = [
+		{
+			title: 'Space Peggle',
+			subtitle: 'Swift',
+			description:
+				'A Swift iOS Peggle-like game built for the iPad. Made for the NUS iPad programming module CS3217.',
+			githubLink: 'https://github.com/jeffsieu/space-peggle',
+			backgroundColor: '#1F1F1F',
+			textColor: '#ffc28a',
+		},
 		{
 			title: 'NUS Computing Club Website',
 			subtitle: 'React with Gatsby',
@@ -72,7 +93,7 @@
 			viewLink: 'https://nuscomputing.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/nuscomputing',
 			backgroundColor: '#28378F',
-			textColor: '#EFEFEF'
+			textColor: '#EFEFEF',
 		},
 		{
 			title: 'MIPS Converter',
@@ -81,7 +102,7 @@
 			demoLink: 'https://mips-converter.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/mips-converter',
 			backgroundColor: '#EFEFEF',
-			textColor: '#2E394D'
+			textColor: '#2E394D',
 		},
 		{
 			title: 'py-sudoku',
@@ -90,7 +111,7 @@
 			viewLink: 'https://pypi.org/project/py-sudoku/',
 			githubLink: 'https://github.com/jeffsieu/py-sudoku',
 			backgroundColor: '#005D94',
-			textColor: '#FFDF76'
+			textColor: '#FFDF76',
 		},
 		{
 			title: 'txthlpr',
@@ -99,7 +120,7 @@
 			demoLink: 'https://txthlpr.jeffsieu.com',
 			githubLink: 'https://github.com/jeffsieu/txthlpr',
 			backgroundColor: '#201B2D',
-			textColor: '#FFDF76'
+			textColor: '#FFDF76',
 		},
 		{
 			title: 'monke',
@@ -109,7 +130,7 @@
 			viewLink: 'https://devpost.com/software/monke-jbdg0v',
 			githubLink: 'https://github.com/jeffsieu/monke',
 			backgroundColor: '#EEBED3',
-			textColor: '#541F38'
+			textColor: '#541F38',
 		},
 		{
 			title: 'sprintf',
@@ -119,7 +140,7 @@
 			demoLink: 'https://orppra.github.io/sprintf',
 			githubLink: 'https://github.com/orppra/sprintf',
 			backgroundColor: '#d4cef5',
-			textColor: '#082602'
+			textColor: '#082602',
 		},
 		{
 			title: 'NUSMods Timetabler',
@@ -129,7 +150,7 @@
 			viewLink: 'https://devpost.com/software/time-tabler',
 			githubLink: 'https://github.com/jeffsieu/timetabler',
 			backgroundColor: '#FF9485',
-			textColor: '#222324'
+			textColor: '#222324',
 		},
 		{
 			title: 'Ping Pong Warz',
@@ -139,7 +160,7 @@
 			viewLink: 'https://devpost.com/software/ping-pong-warz',
 			githubLink: 'https://github.com/Enigmatrix/ping-pong-warz',
 			backgroundColor: '#CEF5DD',
-			textColor: '#0A3002'
+			textColor: '#0A3002',
 		},
 		{
 			title: 'Metapaws',
@@ -148,7 +169,7 @@
 			viewLink: 'https://dorahacks.io/buidl/3171',
 			githubLink: 'https://github.com/jeffsieu/metapaws',
 			backgroundColor: '#EB6F95',
-			textColor: '#000000'
+			textColor: '#000000',
 		},
 		{
 			title: 'AEGIS',
@@ -157,7 +178,7 @@
 				'An algorithmically enhanced scheduling tool for assigning monthly shifts, taking into account role and operational constraints.',
 			githubLink: 'https://github.com/jeffsieu/AEGIS-frontend',
 			backgroundColor: '#2C4B9C',
-			textColor: '#FFFFFF'
+			textColor: '#FFFFFF',
 		},
 		{
 			title: 'Portfolio website',
@@ -165,122 +186,194 @@
 			description: 'My portfolio (this website) was built with Typescript Svelte.',
 			githubLink: 'https://github.com/jeffsieu/jeffsieu.github.io',
 			backgroundColor: '#FFFFFF',
-			textColor: '#000000'
-		}
+			textColor: '#000000',
+		},
 	];
 
-	const skills = [
+	type Skill =
+		| 'flutter'
+		| 'next'
+		| 'react'
+		| 'svelte'
+		| 'firebase'
+		| 'nodejs'
+		| 'sequelize'
+		| 'solidity'
+		| 'android'
+		| 'figma'
+		| 'gimp'
+		| 'html'
+		| 'css'
+		| 'typescript'
+		| 'postgresql'
+		| 'c'
+		| 'dart'
+		| 'swift'
+		| 'python';
+
+	type SkillSectionWithImage = {
+		title: string;
+		technologies: {
+			id: Skill;
+			title: string;
+			image: string;
+		}[];
+	};
+
+	type SkillSection = {
+		title: string;
+		technologies: Skill[];
+	};
+
+	const skillSections: SkillSection[] = [
 		{
 			title: 'Frontend',
-			technologies: [
-				{
-					title: 'Flutter',
-					image: 'images/techs/flutter.svg'
-				},
-				{
-					title: 'Next',
-					image: 'images/techs/nextjs.svg'
-				},
-				{
-					title: 'React',
-					image: 'images/techs/react.svg'
-				},
-				{
-					title: 'Svelte',
-					image: 'images/techs/svelte.svg'
-				}
-			]
+			technologies: ['flutter', 'next', 'react', 'svelte'],
 		},
 		{
 			title: 'Backend',
-			technologies: [
-				{
-					title: 'Firebase',
-					image: 'images/techs/firebase.svg'
-				},
-				{
-					title: 'NodeJS',
-					image: 'images/techs/nodejs.svg'
-				},
-				{
-					title: 'Sequelize ORM',
-					image: 'images/techs/sequelize.svg'
-				}
-			]
+			technologies: ['firebase', 'nodejs', 'sequelize'],
 		},
 		{
 			title: 'Web3',
-			technologies: [
-				{
-					title: 'Solidity',
-					image: 'images/techs/solidity.svg'
-				}
-			]
+			technologies: ['solidity'],
 		},
 		{
 			title: 'Mobile',
-			technologies: [
-				{
-					title: 'Android SDK',
-					image: 'images/techs/android.svg'
-				},
-				{
-					title: 'Flutter',
-					image: 'images/techs/flutter.svg'
-				}
-			]
+			technologies: ['android', 'swift', 'flutter'],
 		},
 		{
 			title: 'Prototyping',
-			technologies: [
-				{
-					title: 'Figma',
-					image: 'images/techs/figma.svg'
-				},
-				{
-					title: 'GIMP',
-					image: 'images/techs/gimp.svg'
-				}
-			]
+			technologies: ['figma', 'gimp'],
 		},
 		{
 			title: 'Languages',
 			technologies: [
-				{
-					title: 'HTML',
-					image: 'images/techs/html.svg'
-				},
-				{
-					title: 'CSS',
-					image: 'images/techs/css.svg'
-				},
-				{
-					title: 'TypeScript',
-					image: 'images/techs/typescript.svg'
-				},
-				{
-					title: 'PostgreSQL',
-					image: 'images/techs/postgresql.svg'
-				},
-				{
-					title: 'C',
-					image: 'images/techs/c.svg'
-				},
-				{
-					title: 'Dart',
-					image: 'images/techs/dart.svg'
-				},
-				{
-					title: 'Python',
-					image: 'images/techs/python.svg'
-				},
-				{
-					title: 'Solidity',
-					image: 'images/techs/solidity.svg'
-				}
-			]
-		}
+				'html',
+				'css',
+				'typescript',
+				'postgresql',
+				'c',
+				'dart',
+				'python',
+				'solidity',
+				'swift',
+			],
+		},
 	];
+
+	type SkillDetail<S extends Skill> = {
+		id: S;
+		title: string;
+		image: string;
+	};
+
+	const skillDetails: {
+		[S in Skill]: SkillDetail<S>;
+	} = {
+		flutter: {
+			id: 'flutter',
+			title: 'Flutter',
+			image: 'images/techs/flutter.svg',
+		},
+		next: {
+			id: 'next',
+			title: 'Next',
+			image: 'images/techs/nextjs.svg',
+		},
+		react: {
+			id: 'react',
+			title: 'React',
+			image: 'images/techs/react.svg',
+		},
+		svelte: {
+			id: 'svelte',
+			title: 'Svelte',
+			image: 'images/techs/svelte.svg',
+		},
+		firebase: {
+			id: 'firebase',
+			title: 'Firebase',
+			image: 'images/techs/firebase.svg',
+		},
+		nodejs: {
+			id: 'nodejs',
+			title: 'NodeJS',
+			image: 'images/techs/nodejs.svg',
+		},
+		sequelize: {
+			id: 'sequelize',
+			title: 'Sequelize ORM',
+			image: 'images/techs/sequelize.svg',
+		},
+		solidity: {
+			id: 'solidity',
+			title: 'Solidity',
+			image: 'images/techs/solidity.svg',
+		},
+		android: {
+			id: 'android',
+			title: 'Android SDK',
+			image: 'images/techs/android.svg',
+		},
+		figma: {
+			id: 'figma',
+			title: 'Figma',
+			image: 'images/techs/figma.svg',
+		},
+		gimp: {
+			id: 'gimp',
+			title: 'GIMP',
+			image: 'images/techs/gimp.svg',
+		},
+		html: {
+			id: 'html',
+			title: 'HTML',
+			image: 'images/techs/html.svg',
+		},
+		css: {
+			id: 'css',
+			title: 'CSS',
+			image: 'images/techs/css.svg',
+		},
+		typescript: {
+			id: 'typescript',
+			title: 'TypeScript',
+			image: 'images/techs/typescript.svg',
+		},
+		postgresql: {
+			id: 'postgresql',
+			title: 'PostgreSQL',
+			image: 'images/techs/postgresql.svg',
+		},
+		c: {
+			id: 'c',
+			title: 'C',
+			image: 'images/techs/c.svg',
+		},
+		dart: {
+			id: 'dart',
+			title: 'Dart',
+			image: 'images/techs/dart.svg',
+		},
+		python: {
+			id: 'python',
+			title: 'Python',
+			image: 'images/techs/python.svg',
+		},
+		swift: {
+			id: 'swift',
+			title: 'Swift',
+			image: 'images/techs/swift.svg',
+		},
+	};
+
+	const skillsWithImages: SkillSectionWithImage[] = skillSections.map(
+		({ technologies, ...section }) => ({
+			...section,
+			technologies: technologies.map((skill) => skillDetails[skill]),
+		}),
+	);
 </script>
 
 <svelte:head>
@@ -354,7 +447,10 @@
 			{#each featuredProjects as project}
 				<div class="project-background" style="background-color: {project.backgroundColor}">
 					<section class="section project-section split centered">
-						<div class="project-image">
+						<div
+							class="project-image"
+							style="--background-color: {project.backgroundColor}; --text-color: {project.textColor}"
+						>
 							<img alt="" src={project.image} />
 						</div>
 						<ProjectDetails {project} class="project-details" />
@@ -370,7 +466,7 @@
 		<section class="section centered no-top">
 			<!-- svelte-ignore a11y-no-redundant-roles -->
 			<ul role="list" class="main-skill-list">
-				{#each skills as skill}
+				{#each skillsWithImages as skill}
 					<li>
 						<p class="fs-h3 fw-bold">{skill.title}</p>
 						<ul role="list" class="skill-list">
@@ -598,6 +694,10 @@
 	}
 
 	@media (min-width: 751px) {
+		.project-section {
+			align-items: start;
+		}
+
 		:global(#featuredProjects .project-list > :nth-child(2n) .project-section) {
 			flex-direction: row-reverse;
 		}
