@@ -26,7 +26,7 @@ export const featuredProjects: FeaturedProject[] = [
 		description:
 			'An algorithm exploration platform allowing flexible and extensive step-by-step visualization of algorithms. Created for my Final Year Project in NUS.',
 		image: AlgoSandboxImg,
-		viewLink: 'https://algosandbox.com',
+		demoLink: 'https://algosandbox.com',
 		githubLink: 'https://github.com/AlgoSandbox/AlgoSandbox',
 		backgroundColor: '#0C346F',
 		textColor: '#FFE4C5',
