@@ -9,6 +9,9 @@
 	import QuardsImg from '$lib/assets/quards.webp';
 	import StopsImg from '$lib/assets/stops.webp';
 	import JeffSieuImg from '$lib/assets/jeff_sieu.webp';
+	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
+
+	const queryClient = new QueryClient();
 
 	let y: number;
 	let navbarHeight: number;
@@ -401,103 +404,105 @@
 	{@html navbarHeightStyle}
 </svelte:head>
 
-<div
-	class="nav-wrapper"
-	style="--border-color: {y > 48 ? 'rgba(0,0,0,0.75)' : 'transparent'}"
-	bind:clientHeight={navbarHeight}
->
-	<nav class="main-nav section centered nav-section">
-		<ul role="navigation">
-			<li>
-				<a
-					href="#main"
-					on:click={() => {
-						y = 0;
-					}}><img src="images/logo.svg" alt="Home" width="36" height="36" /></a
-				>
-			</li>
-			<li aria-hidden="true" />
-			<li><ShadowButton href="#featuredProjects" target="_self">My projects</ShadowButton></li>
-			<li><ShadowButton href="#skills" target="_self">Skills/tools</ShadowButton></li>
-			<li><ShadowButton href="#otherProjects" target="_self">Other projects</ShadowButton></li>
-		</ul>
-	</nav>
-</div>
-<main id="main">
-	<article id="intro">
-		<section class="section centered split">
-			<img id="mainImage" alt="" src={JeffSieuImg} />
-			<div id="mainTitle">
-				<h1 class="fw-regular fs-h1">Hi, I'm Jeff Sieu!</h1>
-				<p class="" style="margin-top: 4rem">
-					I enjoy good UI/UX design, and strive to develop products that not only look good, but
-					feel good to use.
-				</p>
-				<p class="" style="margin-top: 1rem">
-					Here, I showcase some of the things I have made/done.
-				</p>
+<QueryClientProvider client={queryClient}>
+	<div
+		class="nav-wrapper"
+		style="--border-color: {y > 48 ? 'rgba(0,0,0,0.75)' : 'transparent'}"
+		bind:clientHeight={navbarHeight}
+	>
+		<nav class="main-nav section centered nav-section">
+			<ul role="navigation">
+				<li>
+					<a
+						href="#main"
+						on:click={() => {
+							y = 0;
+						}}><img src="images/logo.svg" alt="Home" width="36" height="36" /></a
+					>
+				</li>
+				<li aria-hidden="true" />
+				<li><ShadowButton href="#featuredProjects" target="_self">My projects</ShadowButton></li>
+				<li><ShadowButton href="#skills" target="_self">Skills/tools</ShadowButton></li>
+				<li><ShadowButton href="#otherProjects" target="_self">Other projects</ShadowButton></li>
+			</ul>
+		</nav>
+	</div>
+	<main id="main">
+		<article id="intro">
+			<section class="section centered split">
+				<img id="mainImage" alt="" src={JeffSieuImg} />
+				<div id="mainTitle">
+					<h1 class="fw-regular fs-h1">Hi, I'm Jeff Sieu!</h1>
+					<p class="" style="margin-top: 4rem">
+						I enjoy good UI/UX design, and strive to develop products that not only look good, but
+						feel good to use.
+					</p>
+					<p class="" style="margin-top: 1rem">
+						Here, I showcase some of the things I have made/done.
+					</p>
+				</div>
+			</section>
+		</article>
+		<article id="featuredProjects">
+			<section class="section centered thin">
+				<h2 class="heading fs-h2 fw-regular">My projects</h2>
+			</section>
+			<div class="project-list">
+				{#each featuredProjects as project}
+					<div class="project-background" style="background-color: {project.backgroundColor}">
+						<section class="section project-section split centered">
+							<div
+								class="project-image"
+								style="--background-color: {project.backgroundColor}; --text-color: {project.textColor}"
+							>
+								<img alt="" src={project.image} />
+							</div>
+							<ProjectDetails {project} class="project-details" />
+						</section>
+					</div>
+				{/each}
 			</div>
-		</section>
-	</article>
-	<article id="featuredProjects">
-		<section class="section centered thin">
-			<h2 class="heading fs-h2 fw-regular">My projects</h2>
-		</section>
-		<div class="project-list">
-			{#each featuredProjects as project}
-				<div class="project-background" style="background-color: {project.backgroundColor}">
-					<section class="section project-section split centered">
-						<div
-							class="project-image"
-							style="--background-color: {project.backgroundColor}; --text-color: {project.textColor}"
-						>
-							<img alt="" src={project.image} />
-						</div>
+		</article>
+		<article id="skills">
+			<section class="section centered thin">
+				<h2 class="heading fs-h2 fw-regular">Skills/tools</h2>
+			</section>
+			<section class="section centered no-top">
+				<!-- svelte-ignore a11y-no-redundant-roles -->
+				<ul role="list" class="main-skill-list">
+					{#each skillsWithImages as skill}
+						<li>
+							<p class="fs-h3 fw-bold">{skill.title}</p>
+							<ul role="list" class="skill-list">
+								{#each skill.technologies as tech}
+									<li class="skill fs-h4 fw-medium">
+										<img src={tech.image} alt="" width={48} height={48} />
+										<span>{tech.title}</span>
+									</li>
+								{/each}
+							</ul>
+						</li>
+					{/each}
+				</ul>
+			</section>
+		</article>
+		<article id="otherProjects">
+			<section class="section centered thin">
+				<h2 class="heading fs-h2 fw-regular">Other projects I've worked on</h2>
+			</section>
+			<div class="project-list">
+				{#each otherProjects as project}
+					<section
+						style="background-color: {project.backgroundColor}"
+						class="section project-section"
+					>
 						<ProjectDetails {project} class="project-details" />
 					</section>
-				</div>
-			{/each}
-		</div>
-	</article>
-	<article id="skills">
-		<section class="section centered thin">
-			<h2 class="heading fs-h2 fw-regular">Skills/tools</h2>
-		</section>
-		<section class="section centered no-top">
-			<!-- svelte-ignore a11y-no-redundant-roles -->
-			<ul role="list" class="main-skill-list">
-				{#each skillsWithImages as skill}
-					<li>
-						<p class="fs-h3 fw-bold">{skill.title}</p>
-						<ul role="list" class="skill-list">
-							{#each skill.technologies as tech}
-								<li class="skill fs-h4 fw-medium">
-									<img src={tech.image} alt="" width={48} height={48} />
-									<span>{tech.title}</span>
-								</li>
-							{/each}
-						</ul>
-					</li>
 				{/each}
-			</ul>
-		</section>
-	</article>
-	<article id="otherProjects">
-		<section class="section centered thin">
-			<h2 class="heading fs-h2 fw-regular">Other projects I've worked on</h2>
-		</section>
-		<div class="project-list">
-			{#each otherProjects as project}
-				<section
-					style="background-color: {project.backgroundColor}"
-					class="section project-section"
-				>
-					<ProjectDetails {project} class="project-details" />
-				</section>
-			{/each}
-		</div>
-	</article>
-</main>
+			</div>
+		</article>
+	</main>
+</QueryClientProvider>
 <svelte:window bind:scrollY={y} style="--navbar-height: {navbarHeight}" />
 
 <style>
