@@ -76,6 +76,12 @@
 				<p class="" style="margin-top: 1rem">
 					Here, I showcase some of the things I have made/done.
 				</p>
+				<p class="" style="margin-top: 1rem">
+					Like my work? <a href="https://buymeacoffee.com/jeffsieu">Buy me a coffee</a>.
+				</p>
+				<p class="" style="margin-top: 1rem">
+					Got an idea? Contact me at <a href="mailto:jeffsieu@gmail.com">jeffsieu@gmail.com</a>.
+				</p>
 			</div>
 		</section>
 	</article>
