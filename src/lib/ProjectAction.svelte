@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Project } from '$lib/types';
 	import ShadowButton from './ShadowButton.svelte';
+	import type { Project } from './data/projects';
 
 	export let project: Project;
 </script>
@@ -22,7 +22,7 @@
 			textColor={project.textColor}
 			backgroundColor={project.backgroundColor}
 		>
-		<span class="material-symbols-sharp" aria-hidden="true">open_in_new</span>
+			<span class="material-symbols-sharp" aria-hidden="true">open_in_new</span>
 			View
 		</ShadowButton>
 	{/if}
@@ -31,7 +31,7 @@
 		textColor={project.textColor}
 		backgroundColor={project.backgroundColor}
 	>
-	<span class="material-symbols-sharp" aria-hidden="true">code</span>
+		<span class="material-symbols-sharp" aria-hidden="true">code</span>
 		Source
 	</ShadowButton>
 </div>
