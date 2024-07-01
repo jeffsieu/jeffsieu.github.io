@@ -76,6 +76,15 @@ export const featuredProjects: FeaturedProject[] = [
 
 export const otherProjects: Project[] = [
 	{
+		title: 'SAF Name Tag Generator',
+		subtitle: 'React',
+		description: 'Generates suitable names to put on the SAF No. 4 uniform name tag based on the name tag conventions as at 2024.',
+		demoLink: 'https://safnametag.jeffsieu.com',
+		githubLink: 'https://github.com/jeffsieu/saf-name-tag',
+		backgroundColor: '#96B89C',
+		textColor: '#233021',
+	},
+	{
 		title: 'Space Peggle',
 		subtitle: 'Swift',
 		description:
