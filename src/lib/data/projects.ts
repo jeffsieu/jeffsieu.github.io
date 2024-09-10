@@ -76,9 +76,19 @@ export const featuredProjects: FeaturedProject[] = [
 
 export const otherProjects: Project[] = [
 	{
-		title: 'SAF Name Tag Generator',
+		title: 'TypeScript from Zero',
+		subtitle: 'Typescript',
+		description:
+			'A step-by-step Typescript handbook with practical examples and hands-on exercises.',
+		githubLink: 'https://github.com/jeffsieu/typescript-from-zero',
+		backgroundColor: '#3078C6',
+		textColor: '#FFFFFF',
+	},
+	{
+		title: 'SAF Name Tag Calculator',
 		subtitle: 'React',
-		description: 'Generates suitable names to put on the SAF No. 4 uniform name tag based on the name tag conventions as at 2024.',
+		description:
+			'Generates suitable names to put on the SAF No. 4 uniform name tag based on the name tag conventions as at 2024.',
 		demoLink: 'https://safnametag.jeffsieu.com',
 		githubLink: 'https://github.com/jeffsieu/saf-name-tag',
 		backgroundColor: '#96B89C',
