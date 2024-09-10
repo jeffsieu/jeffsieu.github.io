@@ -77,9 +77,9 @@ export const featuredProjects: FeaturedProject[] = [
 export const otherProjects: Project[] = [
 	{
 		title: 'TypeScript from Zero',
-		subtitle: 'Typescript',
+		subtitle: 'TypeScript',
 		description:
-			'A step-by-step Typescript handbook with practical examples and hands-on exercises.',
+			'A step-by-step TypeScript handbook with practical examples and hands-on exercises.',
 		githubLink: 'https://github.com/jeffsieu/typescript-from-zero',
 		backgroundColor: '#3078C6',
 		textColor: '#FFFFFF',
@@ -115,7 +115,7 @@ export const otherProjects: Project[] = [
 	},
 	{
 		title: 'MIPS Converter',
-		subtitle: 'Svelte with Typescript',
+		subtitle: 'Svelte with TypeScript',
 		description: 'Converts MIPS instructions to and from hex/binary.',
 		demoLink: 'https://mips-converter.jeffsieu.com',
 		githubLink: 'https://github.com/jeffsieu/mips-converter',
@@ -133,7 +133,7 @@ export const otherProjects: Project[] = [
 	},
 	{
 		title: 'txthlpr',
-		subtitle: 'React with Typescript',
+		subtitle: 'React with TypeScript',
 		description: 'Perform repetitive formatting tasks on text without the pain of repetition.',
 		demoLink: 'https://txthlpr.jeffsieu.com',
 		githubLink: 'https://github.com/jeffsieu/txthlpr',
@@ -200,8 +200,8 @@ export const otherProjects: Project[] = [
 	},
 	{
 		title: 'Portfolio website',
-		subtitle: 'Svelte, Typescript',
-		description: 'My portfolio (this website) was built with Typescript Svelte.',
+		subtitle: 'Svelte, TypeScript',
+		description: 'My portfolio (this website) was built with TypeScript Svelte.',
 		githubLink: 'https://github.com/jeffsieu/jeffsieu.github.io',
 		backgroundColor: '#FFFFFF',
 		textColor: '#000000',
