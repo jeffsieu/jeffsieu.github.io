@@ -3,6 +3,7 @@ import AlgoSandboxImg from '$lib/assets/algo_sandbox.webp';
 import BlockedImg from '$lib/assets/blocked.webp';
 import QuardsImg from '$lib/assets/quards.webp';
 import StopsImg from '$lib/assets/stops.webp';
+import TypeScriptFromZeroImg from '$lib/assets/typescript_from_zero.webp';
 
 export type Project = {
 	title: string;
@@ -53,6 +54,17 @@ export const featuredProjects: FeaturedProject[] = [
 		textColor: '#28211A',
 	},
 	{
+		title: 'TypeScript from Zero',
+		subtitle: 'Docusaurus',
+		description:
+			'A step-by-step TypeScript handbook with practical examples and hands-on exercises.',
+		image: TypeScriptFromZeroImg,
+		viewLink: 'https://jeffsieu.com/typescript-from-zero',
+		githubLink: 'https://github.com/jeffsieu/typescript-from-zero',
+		backgroundColor: '#297ED8',
+		textColor: '#FFFFFF',
+	},
+	{
 		title: 'quards',
 		subtitle: 'Flutter',
 		description: 'Solitaire written in Flutter.',
@@ -75,15 +87,6 @@ export const featuredProjects: FeaturedProject[] = [
 ];
 
 export const otherProjects: Project[] = [
-	{
-		title: 'TypeScript from Zero',
-		subtitle: 'TypeScript',
-		description:
-			'A step-by-step TypeScript handbook with practical examples and hands-on exercises.',
-		githubLink: 'https://github.com/jeffsieu/typescript-from-zero',
-		backgroundColor: '#3078C6',
-		textColor: '#FFFFFF',
-	},
 	{
 		title: 'SAF Name Tag Calculator',
 		subtitle: 'React',
