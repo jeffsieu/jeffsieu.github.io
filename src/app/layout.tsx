@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
-import { Poppins, Geist_Mono } from 'next/font/google';
+import { Poppins, Geist_Mono, Changa_One } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
 
 const poppins = Poppins({
 	variable: '--font-poppins',
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+	subsets: ['latin'],
+});
+
+const changaOne = Changa_One({
+	variable: '--font-changa-one',
+	weight: ['400'],
 	subsets: ['latin'],
 });
 
@@ -26,7 +32,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${poppins.variable} ${geistMono.variable} antialiased`}>
+			<body className={`${poppins.variable} ${geistMono.variable} ${changaOne.variable} antialiased`}>
 				<ThemeProvider>{children}</ThemeProvider>
 			</body>
 		</html>

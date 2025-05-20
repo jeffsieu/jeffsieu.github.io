@@ -6,6 +6,7 @@ import SkillChip from '@/components/SkillsChip';
 import ThemeToggleButton from '@/components/ThemeToggleButton';
 import { experiences } from '@/data/experience';
 import { featuredProjects, otherProjects } from '@/data/projects';
+import { skillsWithImages } from '@/data/skills';
 import { socials } from '@/data/socials';
 import {
 	borderedBoxClassName,
@@ -16,7 +17,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
 
-const navLinks = [
+export const navLinks = [
 	{
 		id: 'projects',
 		label: 'Projects',
@@ -24,6 +25,10 @@ const navLinks = [
 	{
 		id: 'experience',
 		label: 'Experience',
+	},
+	{
+		id: 'skills',
+		label: 'Skills',
 	},
 	{
 		id: 'contact',
@@ -36,13 +41,13 @@ function Section({
 	title,
 	children,
 }: {
-	id: string;
+	id: (typeof navLinks)[number]['id'];
 	title: string;
 	children: React.ReactNode;
 }) {
 	return (
 		<section className="flex flex-col gap-8 p-4 sm:p-8">
-			<h2 id={id} className="text-4xl font-medium self-center scroll-mt-8">
+			<h2 id={id} className="text-5xl font-medium self-center scroll-mt-8 font-['Changa_One']">
 				{title}
 			</h2>
 			{children}
@@ -82,7 +87,7 @@ export default function Home() {
 						<p className="text-neutral-600 dark:text-neutral-300 mb-4 font-medium">
 							I enjoy creating delightful web experiences.
 						</p>
-						<nav className="flex gap-2">
+						<nav className="flex flex-wrap gap-2">
 							{navLinks.map((navLink) => (
 								<a
 									key={navLink.id}
@@ -165,6 +170,55 @@ export default function Home() {
 										</p>
 									</div>
 									<p className="whitespace-pre-wrap">{experience.description}</p>
+								</li>
+							);
+						})}
+					</ul>
+				</Section>
+				<Section id="skills" title="Skills">
+					<ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+						{skillsWithImages.map((section) => {
+							return (
+								<li
+									key={section.title}
+									className={clsx(
+										borderedBoxClassName,
+										'bg-white dark:bg-neutral-900',
+										'flex flex-col gap-4 p-4',
+										'@container',
+									)}
+								>
+									<h3 className="text-2xl font-semibold">{section.title}</h3>
+									<ul className={clsx('grid grid-cols-2 @sm:grid-cols-3 gap-2')}>
+										{section.technologies
+											.toSorted((a, b) =>
+												a.title.localeCompare(b.title, undefined, { numeric: true }),
+											)
+											.map((skill) => {
+												return (
+													<li
+														key={skill.id}
+														className={clsx(
+															borderedBoxClassName,
+															'flex flex-col items-center gap-2 py-4 px-2 rounded-md',
+															'bg-[color-mix(in_lch,_var(--color-neutral-100),_var(--color-bg)_20%)]',
+															'dark:bg-[color-mix(in_lch,_var(--color-neutral-900),_var(--color-bg)_20%)]',
+															'text-[color-mix(in_lch,_var(--color-neutral-900),_var(--color-text)_20%)]',
+															'dark:text-[color-mix(in_lch,_var(--color-neutral-100),_var(--color-text)_20%)]',
+														)}
+														style={
+															{
+																'--color-bg': `lch(from ${skill.color} 100% c h)`,
+																'--color-text': `lch(from ${skill.color} 100% c h)`,
+															} as React.CSSProperties
+														}
+													>
+														{skill.icon && <skill.icon />}
+														<p className="text-sm text-center font-semibold">{skill.title}</p>
+													</li>
+												);
+											})}
+									</ul>
 								</li>
 							);
 						})}

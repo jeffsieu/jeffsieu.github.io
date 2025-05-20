@@ -5,21 +5,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useWindowScroll, useWindowSize } from '@uidotdev/usehooks';
 import clsx from 'clsx';
 import { MdArrowDownward } from 'react-icons/md';
+import { navLinks } from '@/app/page';
 
-const sections = [
-	{
-		id: 'projects',
-		label: 'Projects',
-	},
-	{
-		id: 'experience',
-		label: 'Experience',
-	},
-	{
-		id: 'contact',
-		label: 'Contact',
-	},
-];
+const sections = navLinks;
 
 export default function NextSectionButton({ className }: { className?: string }) {
 	const [currentSection, setCurrentSection] = useState<string | null>(null);
@@ -62,7 +50,7 @@ export default function NextSectionButton({ className }: { className?: string })
 
 	const handleScrollToNext = () => {
 		if (nextSection) {
-			document.getElementById(nextSection)?.scrollIntoView({ behavior: 'smooth' });
+			document.getElementById(nextSection)?.scrollIntoView();
 		}
 	};
 
