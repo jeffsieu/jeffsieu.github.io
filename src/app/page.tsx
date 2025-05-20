@@ -48,7 +48,7 @@ export default function Home() {
 				>
 					<Star24
 						aria-hidden
-						className="hidden md:block absolute start-2/7 top-1/12 -rotate-12"
+						className="scale-0 md:scale-100 absolute start-2/7 top-1/12 -rotate-12 transition"
 						pathClassName="stroke-[8px] fill-cyan-500 stroke-black dark:fill-cyan-400 dark:stroke-white"
 						width={96}
 						height={96}
@@ -69,7 +69,7 @@ export default function Home() {
 					/>
 					<Star23
 						aria-hidden
-						className="hidden sm:block absolute end-1/8 bottom-2/9 rotate-12"
+						className="scale-0 sm:scale-100 absolute end-1/8 bottom-2/9 rotate-12 transition"
 						pathClassName="stroke-[11px] fill-fuchsia-500 stroke-black dark:fill-fuchsia-400 dark:stroke-white"
 						width={72}
 						height={72}
