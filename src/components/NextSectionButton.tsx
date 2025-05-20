@@ -43,15 +43,8 @@ export default function NextSectionButton({ className }: { className?: string })
 				const documentBottom = document.documentElement.scrollHeight;
 
 				const hasScrolledPast = rect.top < windowHeight / 2;
-				const isInViewport = rect.top < windowHeight && rect.bottom >= 0;
 				const isScrollAtBottomOfDocument = scrollPosition + windowHeight >= documentBottom;
 				const isOver = hasScrolledPast || isScrollAtBottomOfDocument;
-
-				console.log('section', section.id);
-				console.log('hasScrolledPast', hasScrolledPast);
-				console.log('isInViewport', isInViewport);
-				console.log('isAtBottomOfDocument', isScrollAtBottomOfDocument);
-				console.log('isOver', isOver);
 
 				if (!isOver) {
 					setNextSection(section.id);
