@@ -32,8 +32,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${poppins.variable} ${geistMono.variable} ${changaOne.variable} antialiased`}>
-				<ThemeProvider>{children}</ThemeProvider>
+			<body
+				className={`${poppins.variable} ${geistMono.variable} ${changaOne.variable} antialiased`}
+			>
+				<ThemeProvider enableSystem disableTransitionOnChange>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);

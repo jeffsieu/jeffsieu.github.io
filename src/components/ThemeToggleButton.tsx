@@ -6,12 +6,12 @@ import { useTheme } from 'next-themes';
 import { MdComputer, MdDarkMode, MdLightMode } from 'react-icons/md';
 
 const themeIcons = {
-	light: MdLightMode ,
+	light: MdLightMode,
 	dark: MdDarkMode,
 	system: MdComputer,
 };
 
-export default function ThemeToggleButton({className}: {className?: string}) {
+export default function ThemeToggleButton({ className }: { className?: string }) {
 	const { setTheme, theme } = useTheme();
 
 	const activeTheme = (() => {
