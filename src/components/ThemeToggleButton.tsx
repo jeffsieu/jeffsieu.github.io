@@ -6,9 +6,9 @@ import { useTheme } from 'next-themes';
 import { MdComputer, MdDarkMode, MdLightMode } from 'react-icons/md';
 
 const themeIcons = {
-	light: <MdLightMode />,
-	dark: <MdDarkMode />,
-	system: <MdComputer />,
+	light: MdLightMode ,
+	dark: MdDarkMode,
+	system: MdComputer,
 };
 
 export default function ThemeToggleButton({className}: {className?: string}) {
@@ -32,9 +32,11 @@ export default function ThemeToggleButton({className}: {className?: string}) {
 		}
 	};
 
+	const Icon = themeIcons[activeTheme];
+
 	return (
 		<button className={clsx(borderedButtonClassName, 'p-2', className)} onClick={handleToggle}>
-			{themeIcons[activeTheme]}
+			<Icon size={24} />
 			<span className="sr-only">Toggle theme</span>
 		</button>
 	);
