@@ -76,7 +76,7 @@ export default function Home() {
 					/>
 					<Image
 						alt="Logo"
-						className="border border-black dark:border-white relative z-10"
+						className="border-4 border-black dark:border-white relative z-10 box-content rounded"
 						src="/logo.svg"
 						width={100}
 						height={100}
