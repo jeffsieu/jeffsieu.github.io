@@ -50,7 +50,7 @@ export default function NextSectionButton({ className }: { className?: string })
 
 	const handleScrollToNext = () => {
 		if (nextSection) {
-			document.getElementById(nextSection)?.scrollIntoView();
+			document.getElementById(nextSection)?.scrollIntoView(true);
 		}
 	};
 
