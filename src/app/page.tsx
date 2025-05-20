@@ -69,7 +69,7 @@ export default function Home() {
 					/>
 					<Star23
 						aria-hidden
-						className="absolute end-1/8 bottom-2/9 rotate-12"
+						className="hidden sm:block absolute end-1/8 bottom-2/9 rotate-12"
 						pathClassName="stroke-[11px] fill-fuchsia-500 stroke-black dark:fill-fuchsia-400 dark:stroke-white"
 						width={72}
 						height={72}
