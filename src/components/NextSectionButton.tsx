@@ -5,9 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useWindowScroll, useWindowSize } from '@uidotdev/usehooks';
 import clsx from 'clsx';
 import { MdArrowDownward } from 'react-icons/md';
-import { navLinks } from '@/app/page';
-
-const sections = navLinks;
+import { pageSections } from './Section';
 
 export default function NextSectionButton({ className }: { className?: string }) {
 	const [currentSection, setCurrentSection] = useState<string | null>(null);
@@ -22,7 +20,7 @@ export default function NextSectionButton({ className }: { className?: string })
 			const windowHeight = window.innerHeight;
 			const scrollPosition = scroll.y;
 
-			for (const section of sections) {
+			for (const section of pageSections) {
 				const sectionElement = document.getElementById(section.id);
 
 				if (!sectionElement) continue;
@@ -41,7 +39,7 @@ export default function NextSectionButton({ className }: { className?: string })
 				}
 			}
 
-			setCurrentSection(sections[sections.length - 1].id);
+			setCurrentSection(pageSections[pageSections.length - 1].id);
 			setNextSection(null);
 		};
 
@@ -69,10 +67,10 @@ export default function NextSectionButton({ className }: { className?: string })
 
 	const label = useMemo(() => {
 		if (nextSection) {
-			return sections.find((section) => section.id === nextSection)?.label;
+			return pageSections.find((section) => section.id === nextSection)?.label;
 		}
 
-		return sections.find((section) => section.id === currentSection)?.label;
+		return pageSections.find((section) => section.id === currentSection)?.label;
 	}, [currentSection, nextSection]);
 
 	return (

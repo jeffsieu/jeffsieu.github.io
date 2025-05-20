@@ -2,6 +2,7 @@ import BackToTopButton from '@/components/BackToTopButton';
 import FadingArrow from '@/components/FadingArrow';
 import NextSectionButton from '@/components/NextSectionButton';
 import ProjectCard from '@/components/ProjectCard';
+import Section, { pageSections } from '@/components/Section';
 import SkillChip from '@/components/SkillsChip';
 import ThemeToggleButton from '@/components/ThemeToggleButton';
 import { experiences } from '@/data/experience';
@@ -16,44 +17,6 @@ import {
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
-
-export const navLinks = [
-	{
-		id: 'projects',
-		label: 'Projects',
-	},
-	{
-		id: 'experience',
-		label: 'Experience',
-	},
-	{
-		id: 'skills',
-		label: 'Skills',
-	},
-	{
-		id: 'contact',
-		label: 'Contact',
-	},
-];
-
-function Section({
-	id,
-	title,
-	children,
-}: {
-	id: (typeof navLinks)[number]['id'];
-	title: string;
-	children: React.ReactNode;
-}) {
-	return (
-		<section className="flex flex-col gap-8 p-4 sm:p-8">
-			<h2 id={id} className="text-5xl font-medium self-center scroll-mt-8 font-['Changa_One']">
-				{title}
-			</h2>
-			{children}
-		</section>
-	);
-}
 
 export default function Home() {
 	return (
@@ -88,7 +51,7 @@ export default function Home() {
 							I enjoy creating delightful web experiences.
 						</p>
 						<nav className="flex flex-wrap gap-2">
-							{navLinks.map((navLink) => (
+							{pageSections.map((navLink) => (
 								<a
 									key={navLink.id}
 									href={`#${navLink.id}`}
