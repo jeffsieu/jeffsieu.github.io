@@ -66,7 +66,7 @@ export default function Home() {
 					className={clsx(
 						'flex flex-col items-start justify-center',
 						'sm:flex-row sm:items-center',
-						'flex gap-4 h-dvh relative',
+						'flex gap-4 h-screen relative',
 						'p-4 sm:p-8',
 					)}
 				>
