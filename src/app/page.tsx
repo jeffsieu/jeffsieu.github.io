@@ -62,14 +62,14 @@ export default function Home() {
 					/>
 					<Star5
 						aria-hidden
-						className="absolute start-1/7 bottom-2/12 -translate-x-1/2 translate-y-1/2 rotate-12"
+						className="absolute start-1/9 bottom-1/12 rotate-12"
 						pathClassName="stroke-[4px] fill-indigo-500 stroke-black dark:fill-indigo-400 dark:stroke-white"
 						width={196}
 						height={196}
 					/>
 					<Star23
 						aria-hidden
-						className="absolute end-1/7 bottom-3/12 translate-x-1/2 translate-y-1/2 rotate-12"
+						className="absolute end-1/8 bottom-2/9 rotate-12"
 						pathClassName="stroke-[11px] fill-fuchsia-500 stroke-black dark:fill-fuchsia-400 dark:stroke-white"
 						width={72}
 						height={72}
@@ -114,14 +114,14 @@ export default function Home() {
 						<>
 							<Star9
 								aria-hidden
-								className="absolute top-0 start-0 -translate-x-2/3 -translate-y-1/2 rotate-12"
+								className="absolute -top-9 -start-10 rotate-12"
 								pathClassName="dark:fill-red-400 dark:stroke-white stroke-[10px] fill-red-500 stroke-black"
 								width={64}
 								height={64}
 							/>
 							<Star9
 								aria-hidden
-								className="absolute bottom-0 end-0 translate-x-3/4 translate-y-1/3 -rotate-6 z-20"
+								className="absolute -bottom-7 -end-15 -rotate-6 z-20"
 								pathClassName="dark:fill-red-400 dark:stroke-white stroke-[10px] fill-red-500 stroke-black"
 								width={80}
 								height={80}
@@ -159,10 +159,10 @@ export default function Home() {
 					stars={
 						<Star22
 							aria-hidden
-							className="absolute top-0 start-0 -translate-x-1/2 -translate-y-1/2 rotate-12"
+							className="absolute -top-12 -start-12 rotate-12"
 							pathClassName="stroke-[6px] fill-blue-500 stroke-black dark:fill-blue-400 dark:stroke-white"
-							width={100}
-							height={100}
+							width={96}
+							height={96}
 						/>
 					}
 				>
@@ -217,7 +217,7 @@ export default function Home() {
 						<>
 							<Star32
 								aria-hidden
-								className="absolute top-0 end-0 translate-x-1/2 -translate-y-3/7 rotate-12"
+								className="absolute -top-11 -end-12 rotate-12"
 								pathClassName="stroke-[6px] fill-green-500 stroke-black dark:fill-green-400 dark:stroke-white"
 								width={96}
 								height={96}
@@ -293,7 +293,7 @@ export default function Home() {
 								)}
 							>
 								<Star15
-									className="absolute top-0 start-0 -translate-x-1/3 -translate-y-1/3 rotate-12"
+									className="absolute -top-4 -start-4 rotate-12"
 									pathClassName="fill-amber-500 dark:fill-amber-400 stroke-black dark:stroke-white stroke-[10px]"
 									width={48}
 									height={48}
