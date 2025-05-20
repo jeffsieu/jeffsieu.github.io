@@ -42,7 +42,7 @@ export default function Home() {
 					className={clsx(
 						'flex flex-col items-start justify-center',
 						'sm:flex-row sm:items-center',
-						'flex gap-4 h-svh relative',
+						'flex gap-8 h-svh relative',
 						'p-4 sm:p-8',
 					)}
 				>
