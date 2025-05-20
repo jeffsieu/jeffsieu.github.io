@@ -29,19 +29,19 @@ export default function BackToTopButton({ className }: { className?: string }) {
 	const shouldShowButton = opacity > 0;
 
 	return (
-		<button
-			className={clsx(
-				borderedButtonClassName,
-				'p-2 gap-1 transition items-center text-sm font-semibold',
-				shouldShowButton && 'flex',
-				!shouldShowButton && 'flex translate-y-[calc(100%+1rem)]',
-				className,
-			)}
-			disabled={!shouldShowButton}
-			onClick={handleBackToTop}
-		>
-			<MdKeyboardDoubleArrowUp size={24} />
-			<span>Back to top</span>
-		</button>
+		<div className={clsx('transition', !shouldShowButton && 'translate-y-[calc(100%+2rem)]')}>
+			<button
+				className={clsx(
+					borderedButtonClassName,
+					'flex p-2 gap-1 items-center text-sm font-semibold',
+					className,
+				)}
+				disabled={!shouldShowButton}
+				onClick={handleBackToTop}
+			>
+				<MdKeyboardDoubleArrowUp size={24} />
+				<span>Back to top</span>
+			</button>
+		</div>
 	);
 }

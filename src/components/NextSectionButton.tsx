@@ -76,20 +76,20 @@ export default function NextSectionButton({ className }: { className?: string })
 	}, [currentSection, nextSection]);
 
 	return (
-		<button
-			className={clsx(
-				borderedButtonClassName,
-				'p-2 gap-1 transition font-semibold text-sm items-center',
-				shouldShowButton && 'flex',
-				!shouldShowButton && 'flex translate-y-[calc(100%+1rem)]',
-				className,
-			)}
-			disabled={!nextSection}
-			onClick={handleScrollToNext}
-		>
-			<MdArrowDownward size={24} />
-			<span className="sr-only">Go to {label} section</span>
-			<span aria-hidden>{label}</span>
-		</button>
+		<div className={clsx('transition', !shouldShowButton && 'translate-y-[calc(100%+2rem)]')}>
+			<button
+				className={clsx(
+					borderedButtonClassName,
+					'flex p-2 gap-1 font-semibold text-sm items-center',
+					className,
+				)}
+				disabled={!shouldShowButton}
+				onClick={handleScrollToNext}
+			>
+				<MdArrowDownward size={24} />
+				<span className="sr-only">Go to {label} section</span>
+				<span aria-hidden>{label}</span>
+			</button>
+		</div>
 	);
 }
