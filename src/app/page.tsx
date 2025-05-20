@@ -4,6 +4,14 @@ import NextSectionButton from '@/components/NextSectionButton';
 import ProjectCard from '@/components/ProjectCard';
 import Section, { pageSections } from '@/components/Section';
 import SkillChip from '@/components/SkillsChip';
+import Star15 from '@/components/stars/Star15';
+import Star20 from '@/components/stars/Star20';
+import Star22 from '@/components/stars/Star22';
+import Star23 from '@/components/stars/Star23';
+import Star24 from '@/components/stars/Star24';
+import Star32 from '@/components/stars/Star32';
+import Star5 from '@/components/stars/Star5';
+import Star9 from '@/components/stars/Star9';
 import ThemeToggleButton from '@/components/ThemeToggleButton';
 import { experiences } from '@/data/experience';
 import { featuredProjects, otherProjects } from '@/data/projects';
@@ -38,14 +46,42 @@ export default function Home() {
 						'p-4 sm:p-8',
 					)}
 				>
+					<Star24
+						aria-hidden
+						className="hidden md:block absolute start-2/7 top-1/12 -rotate-12"
+						pathClassName="stroke-[8px] fill-cyan-500 stroke-black dark:fill-cyan-400 dark:stroke-white"
+						width={96}
+						height={96}
+					/>
+					<Star20
+						aria-hidden
+						className="absolute end-1/7 top-3/12 rotate-12"
+						pathClassName="stroke-[7px] fill-amber-500 stroke-black dark:fill-amber-400 dark:stroke-white"
+						width={128}
+						height={128}
+					/>
+					<Star5
+						aria-hidden
+						className="absolute start-1/7 bottom-2/12 -translate-x-1/2 translate-y-1/2 rotate-12"
+						pathClassName="stroke-[4px] fill-indigo-500 stroke-black dark:fill-indigo-400 dark:stroke-white"
+						width={196}
+						height={196}
+					/>
+					<Star23
+						aria-hidden
+						className="absolute end-1/7 bottom-3/12 translate-x-1/2 translate-y-1/2 rotate-12"
+						pathClassName="stroke-[11px] fill-fuchsia-500 stroke-black dark:fill-fuchsia-400 dark:stroke-white"
+						width={72}
+						height={72}
+					/>
 					<Image
 						alt="Logo"
-						className="border border-black dark:border-white"
+						className="border border-black dark:border-white relative z-10"
 						src="/logo.svg"
 						width={100}
 						height={100}
 					/>
-					<div className="flex flex-col">
+					<div className="flex flex-col relative z-10">
 						<h1 className="text-4xl font-bold">Hi, I&apos;m Jeff</h1>
 						<p className="text-neutral-600 dark:text-neutral-300 mb-4 font-medium">
 							I enjoy creating delightful web experiences.
@@ -70,7 +106,29 @@ export default function Home() {
 						<FadingArrow />
 					</div>
 				</section>
-				<Section id="projects" title="Projects">
+				<Section
+					id="projects"
+					title="Projects"
+					titleClassName="bg-red-200 dark:bg-red-700 dark:border-white border-black border-4 rounded-lg px-4 leading-14 relative z-10"
+					stars={
+						<>
+							<Star9
+								aria-hidden
+								className="absolute top-0 start-0 -translate-x-2/3 -translate-y-1/2 rotate-12"
+								pathClassName="dark:fill-red-400 dark:stroke-white stroke-[10px] fill-red-500 stroke-black"
+								width={64}
+								height={64}
+							/>
+							<Star9
+								aria-hidden
+								className="absolute bottom-0 end-0 translate-x-3/4 translate-y-1/3 -rotate-6 z-20"
+								pathClassName="dark:fill-red-400 dark:stroke-white stroke-[10px] fill-red-500 stroke-black"
+								width={80}
+								height={80}
+							/>
+						</>
+					}
+				>
 					<ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 						{featuredProjects.map((project, index) => (
 							<ProjectCard
@@ -94,7 +152,20 @@ export default function Home() {
 						))}
 					</ul>
 				</Section>
-				<Section id="experience" title="Experience">
+				<Section
+					id="experience"
+					title="Experience"
+					titleClassName="bg-blue-200 px-4 py-2 dark:bg-blue-700 rounded-lg leading-14 z-10 relative border-4"
+					stars={
+						<Star22
+							aria-hidden
+							className="absolute top-0 start-0 -translate-x-1/2 -translate-y-1/2 rotate-12"
+							pathClassName="stroke-[6px] fill-blue-500 stroke-black dark:fill-blue-400 dark:stroke-white"
+							width={100}
+							height={100}
+						/>
+					}
+				>
 					<ul className="flex flex-col">
 						{experiences.map((experience) => {
 							return (
@@ -138,7 +209,22 @@ export default function Home() {
 						})}
 					</ul>
 				</Section>
-				<Section id="skills" title="Skills">
+				<Section
+					id="skills"
+					title="Skills"
+					titleClassName="bg-green-200 dark:bg-green-700 dark:border-white border-black border-4 rounded-lg px-4 leading-14 relative z-10"
+					stars={
+						<>
+							<Star32
+								aria-hidden
+								className="absolute top-0 end-0 translate-x-1/2 -translate-y-3/7 rotate-12"
+								pathClassName="stroke-[6px] fill-green-500 stroke-black dark:fill-green-400 dark:stroke-white"
+								width={96}
+								height={96}
+							/>
+						</>
+					}
+				>
 					<ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 						{skillsWithImages.map((section) => {
 							return (
@@ -187,7 +273,11 @@ export default function Home() {
 						})}
 					</ul>
 				</Section>
-				<Section id="contact" title="Contact">
+				<Section
+					id="contact"
+					title="Contact"
+					titleClassName="underline decoration-amber-500 dark:decoration-amber-400 underline-offset-8"
+				>
 					<div className="flex justify-center self-stretch">
 						<div
 							className={clsx(
@@ -199,9 +289,16 @@ export default function Home() {
 							<figure
 								className={clsx(
 									borderedBoxClassName,
-									'flex flex-col w-[200px] m-4 self-center sm:self-start',
+									'flex flex-col w-[200px] m-4 self-center sm:self-start relative',
 								)}
 							>
+								<Star15
+									className="absolute top-0 start-0 -translate-x-1/3 -translate-y-1/3 rotate-12"
+									pathClassName="fill-amber-500 dark:fill-amber-400 stroke-black dark:stroke-white stroke-[10px]"
+									width={48}
+									height={48}
+									aria-hidden
+								/>
 								<Image
 									src="/jeff_sieu.webp"
 									alt="A picture of Jeff Sieu at Gamcheon Culture Village in Korea"

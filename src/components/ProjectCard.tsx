@@ -57,6 +57,7 @@ export default function ProjectCard({
 				'dark:text-[color-mix(in_lch,_var(--color-neutral-100),_var(--color-text)_20%)]',
 				'p-4',
 				'group',
+				'relative',
 				className,
 			)}
 			style={
