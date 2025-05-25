@@ -83,6 +83,15 @@ export const featuredProjects: FeaturedProject[] = [
 
 export const otherProjects: Project[] = [
   {
+    title: 'Tetris',
+    skills: ['flutter'],
+    description: 'A Tetris clone written in Flutter.',
+    demoLink: 'https://tetris.jeffsieu.com',
+    githubLink: 'https://github.com/jeffsieu/tetris-flutter',
+    backgroundColor: '#563ba1',
+    textColor: '#333333',
+  },
+  {
     title: 'SAF Name Tag Calculator',
     skills: ['typescript', 'react'],
     description:
