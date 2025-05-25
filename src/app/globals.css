@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -14,7 +14,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   --background: #0a0a0a;
   --foreground: #ededed;
 }

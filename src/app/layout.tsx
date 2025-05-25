@@ -4,41 +4,41 @@ import './globals.css';
 import { ThemeProvider } from 'next-themes';
 
 const poppins = Poppins({
-	variable: '--font-poppins',
-	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-	subsets: ['latin'],
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
 });
 
 const changaOne = Changa_One({
-	variable: '--font-changa-one',
-	weight: ['400'],
-	subsets: ['latin'],
+  variable: '--font-changa-one',
+  weight: ['400'],
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-	title: 'Jeff Sieu',
-	description: "Hi, I'm Jeff Sieu!. I enjoy experimenting with UI/UX design.",
+  title: 'Jeff Sieu',
+  description: "Hi, I'm Jeff Sieu!. I enjoy experimenting with UI/UX design.",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en" suppressHydrationWarning>
-			<body
-				className={`${poppins.variable} ${geistMono.variable} ${changaOne.variable} antialiased`}
-			>
-				<ThemeProvider enableSystem disableTransitionOnChange>
-					{children}
-				</ThemeProvider>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${poppins.variable} ${geistMono.variable} ${changaOne.variable} antialiased`}
+      >
+        <ThemeProvider enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
 }
