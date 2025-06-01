@@ -6,6 +6,7 @@ import { useWindowScroll, useWindowSize } from '@uidotdev/usehooks';
 import clsx from 'clsx';
 import { MdArrowDownward } from 'react-icons/md';
 import { pageSections } from './Section';
+import { sendGAEvent } from '@next/third-parties/google';
 
 export default function NextSectionButton({ className }: { className?: string }) {
   const [currentSection, setCurrentSection] = useState<string | null>(null);
@@ -46,12 +47,6 @@ export default function NextSectionButton({ className }: { className?: string })
     handleScroll();
   }, [scroll]);
 
-  const handleScrollToNext = () => {
-    if (nextSection) {
-      document.getElementById(nextSection)?.scrollIntoView(true);
-    }
-  };
-
   const opacity = (() => {
     if (scroll.y === null || height === null) return 0;
 
@@ -72,6 +67,16 @@ export default function NextSectionButton({ className }: { className?: string })
 
     return pageSections.find((section) => section.id === currentSection)?.label;
   }, [currentSection, nextSection]);
+
+  const handleScrollToNext = () => {
+    sendGAEvent('event', 'navigation', {
+      action: 'scroll_to_next_section',
+      target: label,
+    });
+    if (nextSection) {
+      document.getElementById(nextSection)?.scrollIntoView(true);
+    }
+  };
 
   return (
     <div className={clsx('transition', !shouldShowButton && 'translate-y-[calc(100%+2rem)]')}>

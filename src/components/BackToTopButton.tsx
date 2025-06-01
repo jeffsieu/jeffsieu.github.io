@@ -1,6 +1,7 @@
 'use client';
 
 import { borderedButtonClassName } from '@/theme/styles';
+import { sendGAEvent } from '@next/third-parties/google';
 import { useWindowScroll, useWindowSize } from '@uidotdev/usehooks';
 import clsx from 'clsx';
 import { MdKeyboardDoubleArrowUp } from 'react-icons/md';
@@ -10,6 +11,9 @@ export default function BackToTopButton({ className }: { className?: string }) {
   const { height } = useWindowSize();
 
   const handleBackToTop = () => {
+    sendGAEvent('event', 'navigation', {
+      action: 'back_to_top',
+    });
     window.scrollTo({
       top: 0,
     });

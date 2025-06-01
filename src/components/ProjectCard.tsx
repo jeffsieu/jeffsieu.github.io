@@ -5,15 +5,18 @@ import { MdPlayArrow, MdOpenInNew, MdCode } from 'react-icons/md';
 import Image from 'next/image';
 import { borderedBoxClassName, borderedButtonNoColorsClassName } from '@/theme/styles';
 import SkillChip from './SkillsChip';
+import { sendGAEvent } from '@next/third-parties/google';
 
 function ProjectCardButton({
   href,
   label,
   icon: Icon,
+  onClick,
 }: {
   href: string;
   label: string;
   icon: IconType;
+  onClick?: () => void;
 }) {
   return (
     <a
@@ -28,6 +31,7 @@ function ProjectCardButton({
         'font-semibold px-2 py-1',
       )}
       href={href}
+      onClick={onClick}
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -82,13 +86,46 @@ export default function ProjectCard({
         </div>
         <div className="flex mt-4 gap-2 flex-wrap">
           {project.demoLink && (
-            <ProjectCardButton href={project.demoLink} label="Try it out" icon={MdPlayArrow} />
+            <ProjectCardButton
+              href={project.demoLink}
+              label="Try it out"
+              icon={MdPlayArrow}
+              onClick={() => {
+                sendGAEvent('event', 'project_action_click', {
+                  action: 'demo',
+                  project: project.title,
+                  href: project.demoLink,
+                });
+              }}
+            />
           )}
           {project.viewLink && (
-            <ProjectCardButton href={project.viewLink} label="View" icon={MdOpenInNew} />
+            <ProjectCardButton
+              href={project.viewLink}
+              label="View"
+              icon={MdOpenInNew}
+              onClick={() => {
+                sendGAEvent('event', 'project_action_click', {
+                  action: 'view',
+                  project: project.title,
+                  href: project.viewLink,
+                });
+              }}
+            />
           )}
           {project.githubLink && (
-            <ProjectCardButton href={project.githubLink} label="Source" icon={MdCode} />
+            <ProjectCardButton
+              href={project.githubLink}
+              label="Source"
+              icon={MdCode}
+              onClick={() => {
+                sendGAEvent('event', 'project_action_click', {
+                  action: 'view_source',
+                  project: project.title,
+                  href: project.githubLink,
+                });
+              }}
+            />
           )}
         </div>
       </div>

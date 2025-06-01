@@ -22,6 +22,7 @@ import {
   borderedButtonClassName,
   borderedButtonNoColorsClassName,
 } from '@/theme/styles';
+import { sendGAEvent } from '@next/third-parties/google';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
@@ -91,6 +92,13 @@ export default function Home() {
                 <a
                   key={navLink.id}
                   href={`#${navLink.id}`}
+                  onClick={() => {
+                    sendGAEvent('event', 'navigation', {
+                      action: 'navigation_link_click',
+                      target: navLink.label,
+                      href: `#${navLink.id}`,
+                    });
+                  }}
                   className={clsx(
                     borderedButtonClassName,
                     'font-semibold sm:text-xl tracking-wider px-2 py-1',
@@ -338,6 +346,13 @@ export default function Home() {
                           'text-[color-mix(in_lch,_var(--color-neutral-900),_var(--color-text)_20%)]',
                           'dark:text-[color-mix(in_lch,_var(--color-neutral-100),_var(--color-text)_20%)]',
                         )}
+                        onClick={() => {
+                          sendGAEvent('event', 'navigation', {
+                            action: 'social_link_click',
+                            target: social.label,
+                            href: social.href,
+                          });
+                        }}
                         style={
                           {
                             '--color-text': `lch(from ${social.color} 100% calc(c * 2) h)`,

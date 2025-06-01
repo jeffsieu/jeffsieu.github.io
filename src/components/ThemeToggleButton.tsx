@@ -1,6 +1,7 @@
 'use client';
 
 import { borderedButtonClassName } from '@/theme/styles';
+import { sendGAEvent } from '@next/third-parties/google';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -29,13 +30,16 @@ export default function ThemeToggleButton({ className }: { className?: string })
   }, []);
 
   const handleToggle = () => {
-    if (activeTheme === 'light') {
-      setTheme('dark');
-    } else if (activeTheme === 'dark') {
-      setTheme('system');
-    } else {
-      setTheme('light');
-    }
+    const newTheme = (() => {
+      if (activeTheme === 'light') return 'dark';
+      if (activeTheme === 'dark') return 'system';
+      return 'light';
+    })();
+    setTheme(newTheme);
+    sendGAEvent('event', 'theme_toggle', {
+      from: activeTheme,
+      to: newTheme,
+    });
   };
 
   const Icon = themeIcons[activeTheme];
