@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins, Geist_Mono, Changa_One } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -39,6 +40,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-CDZHJQ001N" />
     </html>
   );
 }
