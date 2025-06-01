@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons';
 import { MdMail } from 'react-icons/md';
-import { SiDevdotto, SiGithub, SiLinkedin } from 'react-icons/si';
+import { SiBuymeacoffee, SiDevdotto, SiGithub, SiLinkedin } from 'react-icons/si';
 
 type SocialLink = {
   id: string;
@@ -43,5 +43,13 @@ export const socials: SocialLink[] = [
     label: 'jeffsieu@gmail.com',
     platform: 'Email',
     color: '#EA4335',
+  },
+  {
+    id: 'buymeacoffee',
+    icon: SiBuymeacoffee,
+    href: 'https://buymeacoffee.com/jeffsieu',
+    label: 'Buy me a coffee',
+    platform: 'Buy Me a Coffee',
+    color: '#FFDD00',
   },
 ];
