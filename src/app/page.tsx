@@ -1,9 +1,13 @@
+'use client';
+
 import BackToTopButton from '@/components/BackToTopButton';
 import FadingArrow from '@/components/FadingArrow';
+import NavLink from '@/components/NavLink';
 import NextSectionButton from '@/components/NextSectionButton';
 import ProjectCard from '@/components/ProjectCard';
 import Section, { pageSections } from '@/components/Section';
 import SkillChip from '@/components/SkillsChip';
+import SocialLink from '@/components/SocialLink';
 import Star15 from '@/components/stars/Star15';
 import Star20 from '@/components/stars/Star20';
 import Star22 from '@/components/stars/Star22';
@@ -17,12 +21,7 @@ import { experiences } from '@/data/experience';
 import { featuredProjects, otherProjects } from '@/data/projects';
 import { skillsWithImages } from '@/data/skills';
 import { socials } from '@/data/socials';
-import {
-  borderedBoxClassName,
-  borderedButtonClassName,
-  borderedButtonNoColorsClassName,
-} from '@/theme/styles';
-import { sendGAEvent } from '@next/third-parties/google';
+import { borderedBoxClassName } from '@/theme/styles';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
@@ -89,23 +88,7 @@ export default function Home() {
             </p>
             <nav className="flex flex-wrap gap-2">
               {pageSections.map((navLink) => (
-                <a
-                  key={navLink.id}
-                  href={`#${navLink.id}`}
-                  onClick={() => {
-                    sendGAEvent('event', 'navigation', {
-                      action: 'navigation_link_click',
-                      target: navLink.label,
-                      href: `#${navLink.id}`,
-                    });
-                  }}
-                  className={clsx(
-                    borderedButtonClassName,
-                    'font-semibold sm:text-xl tracking-wider px-2 py-1',
-                  )}
-                >
-                  {navLink.label}
-                </a>
+                <NavLink key={navLink.id} href={`#${navLink.id}`} label={navLink.label} />
               ))}
             </nav>
           </div>
@@ -335,36 +318,12 @@ export default function Home() {
                 <ul className="flex flex-col gap-2" aria-labelledby="socialLinks">
                   {socials.map((social) => (
                     <li key={social.id}>
-                      <a
+                      <SocialLink
+                        icon={social.icon}
                         href={social.href}
-                        className={clsx(
-                          borderedButtonNoColorsClassName,
-                          'flex gap-2 items-center px-4 py-2',
-                          'text-sm font-semibold',
-                          'bg-[color-mix(in_lch,_var(--color-neutral-100),_var(--color-bg)_20%)]',
-                          'dark:bg-[color-mix(in_lch,_var(--color-neutral-900),_var(--color-bg)_20%)]',
-                          'text-[color-mix(in_lch,_var(--color-neutral-900),_var(--color-text)_20%)]',
-                          'dark:text-[color-mix(in_lch,_var(--color-neutral-100),_var(--color-text)_20%)]',
-                        )}
-                        onClick={() => {
-                          sendGAEvent('event', 'navigation', {
-                            action: 'social_link_click',
-                            target: social.label,
-                            href: social.href,
-                          });
-                        }}
-                        style={
-                          {
-                            '--color-text': `lch(from ${social.color} 100% calc(c * 2) h)`,
-                            '--color-bg': `lch(from ${social.color} 100% calc(c * 2) h)`,
-                          } as React.CSSProperties
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <social.icon size={24} aria-label={social.label} />
-                        {social.label}
-                      </a>
+                        label={social.label}
+                        color={social.color}
+                      />
                     </li>
                   ))}
                 </ul>
