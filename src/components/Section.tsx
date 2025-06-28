@@ -33,7 +33,7 @@ export default function Section<S extends PageSection>({
   titleClassName?: string;
 }) {
   return (
-    <section className="flex flex-col gap-8 p-4 sm:p-8">
+    <section className="flex flex-col gap-8 m-4 sm:m-8">
       <h2
         id={id}
         className="text-5xl font-medium self-center scroll-mt-8 font-['Changa_One'] relative"
@@ -41,7 +41,7 @@ export default function Section<S extends PageSection>({
         <span className={titleClassName}>{title}</span>
         {stars}
       </h2>
-      {children}
+      <div className="xl:max-w-screen-2xl w-full self-center">{children}</div>
     </section>
   );
 }
