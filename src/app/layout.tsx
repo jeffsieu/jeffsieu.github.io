@@ -24,6 +24,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Jeff Sieu',
   description: "Hi, I'm Jeff Sieu!. I enjoy experimenting with UI/UX design.",
+  other: {
+    'google-adsense-account': 'ca-pub-3196434162880425',
+  },
 };
 
 export default function RootLayout({
