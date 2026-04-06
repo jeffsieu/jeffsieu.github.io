@@ -2,6 +2,7 @@
 
 import BackToTopButton from '@/components/BackToTopButton';
 import FadingArrow from '@/components/FadingArrow';
+import MagneticStar from '@/components/MagneticStar';
 import NavLink from '@/components/NavLink';
 import NextSectionButton from '@/components/NextSectionButton';
 import ProjectCard from '@/components/ProjectCard';
@@ -46,34 +47,42 @@ export default function Home() {
             'p-4 sm:p-8',
           )}
         >
-          <Star24
-            aria-hidden
-            className="scale-0 md:scale-100 absolute start-2/7 top-1/12 -rotate-12 transition"
-            pathClassName="stroke-[8px] fill-cyan-500 stroke-black dark:fill-cyan-400 dark:stroke-white"
-            width={96}
-            height={96}
-          />
-          <Star20
-            aria-hidden
-            className="absolute end-1/7 top-3/12 rotate-12"
-            pathClassName="stroke-[7px] fill-amber-500 stroke-black dark:fill-amber-400 dark:stroke-white"
-            width={128}
-            height={128}
-          />
-          <Star5
-            aria-hidden
-            className="absolute start-1/9 bottom-1/12 rotate-12"
-            pathClassName="stroke-[4px] fill-indigo-500 stroke-black dark:fill-indigo-400 dark:stroke-white"
-            width={196}
-            height={196}
-          />
-          <Star23
-            aria-hidden
-            className="scale-0 sm:scale-100 absolute end-1/8 bottom-2/9 rotate-12 transition"
-            pathClassName="stroke-[11px] fill-fuchsia-500 stroke-black dark:fill-fuchsia-400 dark:stroke-white"
-            width={72}
-            height={72}
-          />
+          <MagneticStar strength={0.25} radius={180}>
+            <Star24
+              aria-hidden
+              className="scale-0 md:scale-100 absolute start-2/7 top-1/12 -rotate-12 transition"
+              pathClassName="stroke-[8px] fill-cyan-500 stroke-black dark:fill-cyan-400 dark:stroke-white"
+              width={96}
+              height={96}
+            />
+          </MagneticStar>
+          <MagneticStar strength={0.35} radius={200}>
+            <Star20
+              aria-hidden
+              className="absolute end-1/7 top-3/12 rotate-12"
+              pathClassName="stroke-[7px] fill-amber-500 stroke-black dark:fill-amber-400 dark:stroke-white"
+              width={128}
+              height={128}
+            />
+          </MagneticStar>
+          <MagneticStar strength={0.2} radius={220}>
+            <Star5
+              aria-hidden
+              className="absolute start-1/9 bottom-1/12 rotate-12"
+              pathClassName="stroke-[4px] fill-indigo-500 stroke-black dark:fill-indigo-400 dark:stroke-white"
+              width={196}
+              height={196}
+            />
+          </MagneticStar>
+          <MagneticStar strength={0.4} radius={160}>
+            <Star23
+              aria-hidden
+              className="scale-0 sm:scale-100 absolute end-1/8 bottom-2/9 rotate-12 transition"
+              pathClassName="stroke-[11px] fill-fuchsia-500 stroke-black dark:fill-fuchsia-400 dark:stroke-white"
+              width={72}
+              height={72}
+            />
+          </MagneticStar>
           <Image
             alt="Logo"
             className="border-4 border-black dark:border-white relative z-10 box-content rounded"
