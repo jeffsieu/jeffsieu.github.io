@@ -1,6 +1,7 @@
 'use client';
 
 import BackToTopButton from '@/components/BackToTopButton';
+import DottedBackground from '@/components/DottedBackground';
 import FadingArrow from '@/components/FadingArrow';
 import MagneticStar from '@/components/MagneticStar';
 import NavLink from '@/components/NavLink';
@@ -29,15 +30,8 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <div
-      className={clsx(
-        'bg-size-[1.3rem_1.3rem] bg-repeat-round bg-position-[0_0,_0.65rem_0.65rem]',
-        'dark:bg-[radial-gradient(circle_at_center,_var(--color-neutral-900)_0.25rem,_transparent_0),radial-gradient(circle_at_center,_var(--color-neutral-900)_0.25rem,_transparent_0)]',
-        'bg-[radial-gradient(circle_at_center,_var(--color-neutral-100)_0.25rem,_transparent_0),radial-gradient(circle_at_center,_var(--color-neutral-100)_0.25rem,_transparent_0)]',
-        'min-h-screen',
-        'pb-16',
-      )}
-    >
+    <div className="min-h-screen pb-16">
+      <DottedBackground />
       <main className="flex flex-col gap-16 row-start-2 items-stretch">
         <section
           className={clsx(
