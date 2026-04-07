@@ -99,8 +99,8 @@ export default function DottedBackground() {
       const dots = dotsRef.current;
       const cursor = cursorRef.current;
       const maxDistance = isReduced ? 0 : 150; // Influence radius
-      const maxGrowth = 2; // How much dots can grow
-      const maxBrightness = 0.4; // How much brighter they can get
+      const maxGrowth = 3; // How much dots can grow
+      const maxBrightness = 0.1; // How much brighter they can get
 
       // Update and draw each dot
       for (let i = 0; i < dots.length; i++) {
