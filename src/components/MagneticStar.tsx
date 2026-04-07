@@ -36,19 +36,19 @@ export default function MagneticStar({
   // Apply rotation with damping each frame
   useAnimationFrame((time, delta) => {
     if (isReduced) return;
-    
+
     const deltaSeconds = delta / 1000; // Convert to seconds
-    
+
     // Apply current angular velocity
     if (Math.abs(angularVelocity.current) > 0.1) {
       const currentRotation = rotation.get();
       const rotationDelta = angularVelocity.current * deltaSeconds;
       rotation.set(currentRotation + rotationDelta);
-      
+
       // Apply damping (quick slow-down)
       const damping = 0.92; // Higher = slower damping
       angularVelocity.current *= Math.pow(damping, deltaSeconds * 60);
-      
+
       // Stop completely when very slow
       if (Math.abs(angularVelocity.current) < 0.1) {
         angularVelocity.current = 0;
@@ -60,11 +60,11 @@ export default function MagneticStar({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (isReduced) return;
-    
+
     // Add to angular velocity (accumulates momentum)
     const spinBoost = 720; // degrees per second added per click
     angularVelocity.current += spinBoost;
-    
+
     // Cap maximum velocity for safety
     if (Math.abs(angularVelocity.current) > 3600) {
       angularVelocity.current = Math.sign(angularVelocity.current) * 3600;
@@ -136,6 +136,8 @@ export default function MagneticStar({
       ref={containerRef}
       className={childClassName}
       onClick={handleClick}
+      aria-hidden="true"
+      tabIndex={-1}
       style={{
         x: springX,
         y: springY,
