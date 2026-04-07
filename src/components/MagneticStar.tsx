@@ -141,6 +141,8 @@ export default function MagneticStar({
         y: springY,
         willChange: 'transform',
         cursor: 'pointer',
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
       }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
