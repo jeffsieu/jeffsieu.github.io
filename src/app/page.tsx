@@ -103,7 +103,7 @@ export default function Home() {
         <Section
           id="projects"
           title="Projects"
-          titleClassName="bg-red-200 dark:bg-red-700 dark:border-white border-black border-4 rounded-lg px-4 leading-14 relative z-10"
+          titleClassName="bg-red-200 dark:bg-red-700 border-4 rounded-lg px-4 leading-14 relative z-10"
           stars={
             <>
               <Star9
@@ -206,7 +206,7 @@ export default function Home() {
         <Section
           id="skills"
           title="Skills"
-          titleClassName="bg-green-200 dark:bg-green-700 dark:border-white border-black border-4 rounded-lg px-4 leading-14 relative z-10"
+          titleClassName="bg-green-200 dark:bg-green-700 border-4 rounded-lg px-4 leading-14 relative z-10"
           stars={
             <>
               <Star32
