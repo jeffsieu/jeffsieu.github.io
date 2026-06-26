@@ -2,9 +2,10 @@
 
 import { borderedButtonClassName } from '@/theme/styles';
 import { sendGAEvent } from '@next/third-parties/google';
+import { useIsClient } from '@uidotdev/usehooks';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MdComputer, MdDarkMode, MdLightMode } from 'react-icons/md';
 
 const themeIcons = {
@@ -14,8 +15,8 @@ const themeIcons = {
 };
 
 export default function ThemeToggleButton({ className }: { className?: string }) {
-  const [mounted, setMounted] = useState(false);
   const { setTheme, theme } = useTheme();
+  const isClient = useIsClient();
 
   const activeTheme = (() => {
     if (theme === 'system' || theme === 'dark' || theme === 'light') {
@@ -24,10 +25,6 @@ export default function ThemeToggleButton({ className }: { className?: string })
 
     return 'system';
   })();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleToggle = () => {
     const newTheme = (() => {
@@ -44,7 +41,7 @@ export default function ThemeToggleButton({ className }: { className?: string })
 
   const Icon = themeIcons[activeTheme];
 
-  if (!mounted) {
+  if (!isClient) {
     return null;
   }
 

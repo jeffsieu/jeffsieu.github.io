@@ -1,172 +1,129 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useMemo, useCallback } from 'react';
 import { useTheme } from 'next-themes';
+import { useWindowSize, useMouse } from '@uidotdev/usehooks';
+import useIsReducedMotion from '@/hooks/useIsReducedMotion';
+import useIsTouchScreen from '@/hooks/useIsTouchScreen';
+import useAnimationFrame from '@/hooks/useAnimationFrame';
 
 interface Dot {
   x: number;
   y: number;
-  baseRadius: number;
-  currentRadius: number;
-  brightness: number;
 }
+
+function dotInfluence(dot: Dot, cx: number, cy: number) {
+  const dx = dot.x - cx;
+  const dy = dot.y - cy;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+  if (distance < 1 || distance >= MAX_DISTANCE)
+    return { radius: BASE_RADIUS, brightness: 0, ox: 0, oy: 0 };
+
+  const t = distance / MAX_DISTANCE;
+  const glow = 1 - t * t;
+  const pull = glow * (1 - 2 * t); // +attract at center, crosses 0, -repel at edge
+
+  return {
+    radius: BASE_RADIUS,
+    brightness: MAX_BRIGHTNESS * glow * glow,
+    ox: -(dx / distance) * MAX_PULL * pull,
+    oy: -(dy / distance) * MAX_PULL * pull,
+  };
+}
+
+function lerpColor(isDark: boolean, t: number) {
+  if (isDark) {
+    const v = 38 + 200 * t;
+    return `rgb(${v}, ${v}, ${v})`;
+  }
+  const v = 245 - 100 * t;
+  return `rgb(${v}, ${v}, ${v})`;
+}
+
+const SPACING = 20.8;
+const BASE_RADIUS = 4;
+const MAX_DISTANCE = 180;
+const MAX_BRIGHTNESS = 0.1;
+const MAX_PULL = 2.0;
 
 export default function DottedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const dotsRef = useRef<Dot[]>([]);
-  const cursorRef = useRef({ x: -1000, y: -1000 });
-  const animationFrameRef = useRef<number | null>(null);
-  const [isReduced, setIsReduced] = useState(false);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
+  const isReducedMotion = useIsReducedMotion();
+  const isTouchScreen = useIsTouchScreen();
+  const { width, height } = useWindowSize();
+  const [{ elementX, elementY }, mouseRef] = useMouse<HTMLCanvasElement>();
   const { resolvedTheme } = useTheme();
 
-  useEffect(() => {
-    // Check for reduced motion preference
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setIsReduced(mediaQuery.matches);
+  const setCanvasRef = useCallback(
+    (node: HTMLCanvasElement | null) => {
+      canvasRef.current = node;
+      if (node) {
+        mouseRef.current = node;
+      }
+    },
+    [mouseRef],
+  );
+  const dots = useMemo(() => {
+    if (width === null || height === null) return [];
+    const result: Dot[] = [];
 
-    const handleChange = (e: MediaQueryListEvent) => {
-      setIsReduced(e.matches);
-    };
+    for (let y = 0; y < height + SPACING; y += SPACING) {
+      for (let x = 0; x < width + SPACING; x += SPACING) {
+        result.push({ x, y });
+        result.push({ x: x + SPACING / 2, y: y + SPACING / 2 });
+      }
+    }
 
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
+    return result;
+  }, [width, height]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || width === null || height === null) return;
 
     const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
+    ctxRef.current = ctx;
 
-    // Set canvas size to window size
-    const resizeCanvas = () => {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      ctx.scale(dpr, dpr);
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.scale(dpr, dpr);
+  }, [width, height]);
 
-      // Regenerate dots on resize
-      generateDots();
-    };
+  useAnimationFrame(() => {
+    const ctx = ctxRef.current;
+    if (!ctx || width === null || height === null) return;
 
-    // Generate dot grid
-    const generateDots = () => {
-      const spacing = 20.8; // 1.3rem in pixels (roughly)
-      const baseRadius = 4; // 0.25rem
-      const dots: Dot[] = [];
+    const isDark = resolvedTheme === 'dark';
+    const bg = isDark ? '#0a0a0a' : '#ffffff';
+    const baseColor = isDark ? '#262626' : '#f5f5f5';
+    const active = !isReducedMotion && !isTouchScreen;
 
-      for (let y = 0; y < window.innerHeight + spacing; y += spacing) {
-        for (let x = 0; x < window.innerWidth + spacing; x += spacing) {
-          dots.push({
-            x,
-            y,
-            baseRadius,
-            currentRadius: baseRadius,
-            brightness: 0,
-          });
-          // Offset every other row for checkerboard pattern
-          dots.push({
-            x: x + spacing / 2,
-            y: y + spacing / 2,
-            baseRadius,
-            currentRadius: baseRadius,
-            brightness: 0,
-          });
-        }
-      }
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, width, height);
 
-      dotsRef.current = dots;
-    };
+    for (const dot of dots) {
+      const {
+        radius,
+        brightness,
+        ox = 0,
+        oy = 0,
+      } = active ? dotInfluence(dot, elementX, elementY) : { radius: BASE_RADIUS, brightness: 0 };
 
-    // Track cursor position
-    const handleMouseMove = (e: MouseEvent) => {
-      cursorRef.current = { x: e.clientX, y: e.clientY };
-    };
-
-    // Animation loop
-    const animate = () => {
-      const isDark = resolvedTheme === 'dark';
-      const bgColor = isDark ? '#0a0a0a' : '#ffffff';
-      const dotColor = isDark ? '#262626' : '#f5f5f5'; // neutral-900 / neutral-100
-
-      // Clear canvas
-      ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-
-      const dots = dotsRef.current;
-      const cursor = cursorRef.current;
-      const maxDistance = isReduced ? 0 : 150; // Influence radius
-      const maxGrowth = 3; // How much dots can grow
-      const maxBrightness = 0.1; // How much brighter they can get
-
-      // Update and draw each dot
-      for (let i = 0; i < dots.length; i++) {
-        const dot = dots[i];
-
-        if (!isReduced) {
-          // Calculate distance to cursor
-          const dx = dot.x - cursor.x;
-          const dy = dot.y - cursor.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < maxDistance) {
-            // Calculate influence (1 at center, 0 at maxDistance)
-            const influence = 1 - distance / maxDistance;
-            const eased = influence * influence; // Quadratic easing
-
-            dot.currentRadius = dot.baseRadius + maxGrowth * eased;
-            dot.brightness = maxBrightness * eased;
-          } else {
-            dot.currentRadius = dot.baseRadius;
-            dot.brightness = 0;
-          }
-        } else {
-          // Static dots when reduced motion is enabled
-          dot.currentRadius = dot.baseRadius;
-          dot.brightness = 0;
-        }
-
-        // Draw dot with brightness
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.currentRadius, 0, Math.PI * 2);
-
-        if (dot.brightness > 0.01) {
-          // Mix base color with highlighted color
-          const r = isDark ? 38 + 200 * dot.brightness : 245 - 100 * dot.brightness;
-          const g = isDark ? 38 + 200 * dot.brightness : 245 - 100 * dot.brightness;
-          const b = isDark ? 38 + 200 * dot.brightness : 245 - 100 * dot.brightness;
-          ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-        } else {
-          ctx.fillStyle = dotColor;
-        }
-
-        ctx.fill();
-      }
-
-      animationFrameRef.current = requestAnimationFrame(animate);
-    };
-
-    // Initialize
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', handleMouseMove);
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [resolvedTheme, isReduced]);
+      ctx.beginPath();
+      ctx.arc(dot.x + ox, dot.y + oy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = brightness > 0.01 ? lerpColor(isDark, brightness) : baseColor;
+      ctx.fill();
+    }
+  });
 
   return (
     <canvas
-      ref={canvasRef}
+      ref={setCanvasRef}
       className="fixed inset-0 -z-10 pointer-events-none"
       style={{ willChange: 'contents' }}
     />

@@ -41,59 +41,71 @@ export default function Home() {
             'p-4 sm:p-8',
           )}
         >
-          <MagneticStar strength={0.25} radius={180}>
+          <MagneticStar
+            strength={0.4}
+            radius={220}
+            className="scale-0 md:scale-100 absolute start-2/7 top-1/12 -rotate-12"
+          >
             <Star24
-              aria-hidden
-              className="scale-0 md:scale-100 absolute start-2/7 top-1/12 -rotate-12 transition"
               pathClassName="stroke-[8px] fill-cyan-500 stroke-black dark:fill-cyan-400 dark:stroke-white"
               width={96}
               height={96}
             />
           </MagneticStar>
-          <MagneticStar strength={0.35} radius={200}>
+          <MagneticStar strength={0.4} radius={250} className="absolute end-1/7 top-3/12 rotate-12">
             <Star20
-              aria-hidden
-              className="absolute end-1/7 top-3/12 rotate-12"
               pathClassName="stroke-[7px] fill-amber-500 stroke-black dark:fill-amber-400 dark:stroke-white"
               width={128}
               height={128}
             />
           </MagneticStar>
-          <MagneticStar strength={0.2} radius={220}>
+          <MagneticStar
+            strength={0.4}
+            radius={300}
+            className="absolute start-1/9 bottom-1/12 rotate-12"
+          >
             <Star5
-              aria-hidden
-              className="absolute start-1/9 bottom-1/12 rotate-12"
               pathClassName="stroke-[4px] fill-indigo-500 stroke-black dark:fill-indigo-400 dark:stroke-white"
               width={196}
               height={196}
             />
           </MagneticStar>
-          <MagneticStar strength={0.4} radius={160}>
+          <MagneticStar
+            strength={0.4}
+            radius={200}
+            className="scale-0 sm:scale-100 absolute end-1/8 bottom-2/9 rotate-12"
+          >
             <Star23
-              aria-hidden
-              className="scale-0 sm:scale-100 absolute end-1/8 bottom-2/9 rotate-12 transition"
               pathClassName="stroke-[11px] fill-fuchsia-500 stroke-black dark:fill-fuchsia-400 dark:stroke-white"
               width={72}
               height={72}
             />
           </MagneticStar>
-          <Image
-            alt="Logo"
-            className="border-4 border-black dark:border-white relative z-10 box-content rounded"
-            src="/logo.svg"
-            width={100}
-            height={100}
-          />
-          <div className="flex flex-col relative z-10">
-            <h1 className="text-4xl font-bold">Hi, I&apos;m Jeff</h1>
-            <p className="text-neutral-600 dark:text-neutral-300 mb-4 font-medium">
-              I enjoy creating delightful web experiences.
-            </p>
-            <nav className="flex flex-wrap gap-2">
-              {pageSections.map((navLink) => (
-                <NavLink key={navLink.id} href={`#${navLink.id}`} label={navLink.label} />
-              ))}
-            </nav>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-8 relative z-10 sm:-ml-16">
+            <Image
+              alt="Logo"
+              className="border-4 border-black dark:border-white relative z-10 box-content rounded -rotate-2"
+              src="/logo.svg"
+              width={100}
+              height={100}
+            />
+            <div className="flex flex-col relative z-10">
+              <div className="-rotate-2">
+                <h1 className="text-6xl sm:text-8xl font-extrabold tracking-[-0.03em] leading-[0.95]">
+                  Hi, I&apos;m Jeff
+                </h1>
+                <div className="bg-[#FFFDF5] dark:bg-neutral-800 border-4 border-black dark:border-white shadow-[4px_4px_0_0] shadow-black dark:shadow-white rounded px-6 py-3 mb-6 mr-2">
+                  <p className="text-neutral-800 dark:text-neutral-100 text-lg sm:text-xl font-bold">
+                    I enjoy creating delightful web experiences.
+                  </p>
+                </div>
+              </div>
+              <nav className="flex flex-wrap gap-3 -rotate-2">
+                {pageSections.map((navLink) => (
+                  <NavLink key={navLink.id} href={`#${navLink.id}`} label={navLink.label} />
+                ))}
+              </nav>
+            </div>
           </div>
           <ThemeToggleButton className="top-0 end-0 m-4 sm:m-8 absolute flex justify-center" />
           <div className="bottom-8 left-0 right-0 absolute flex justify-center" aria-hidden>
