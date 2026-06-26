@@ -23,7 +23,7 @@ export default function ProjectCardButton({
         'bg-black/5 hover:bg-black/10 focus-visible:bg-black/10',
         'dark:bg-white/10 dark:hover:bg-white/20 dark:focus-visible:bg-white/20',
         'text-neutral-700 border-neutral-700 shadow-neutral-700',
-        'font-semibold px-2 py-1',
+        'font-semibold px-2 py-2',
       )}
       href={href}
       onClick={onClick}

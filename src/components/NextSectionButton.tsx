@@ -83,7 +83,7 @@ export default function NextSectionButton({ className }: { className?: string })
       <button
         className={clsx(
           borderedButtonClassName,
-          'flex p-2 gap-1 font-semibold text-sm items-center',
+          'flex p-3 gap-1 font-semibold text-sm items-center',
           className,
         )}
         disabled={!shouldShowButton}

@@ -15,7 +15,7 @@ export default function NavLink({ href, label }: { href: string; label: string }
           href,
         });
       }}
-      className={clsx(borderedButtonClassName, 'font-semibold sm:text-xl tracking-wider px-2 py-1')}
+      className={clsx(borderedButtonClassName, 'font-semibold sm:text-xl tracking-wider px-2 py-2')}
     >
       {label}
     </a>

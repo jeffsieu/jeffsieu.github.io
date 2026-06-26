@@ -49,7 +49,7 @@ export default function ThemeToggleButton({ className }: { className?: string })
   }
 
   return (
-    <button className={clsx(borderedButtonClassName, 'p-2', className)} onClick={handleToggle}>
+    <button className={clsx(borderedButtonClassName, 'p-3', className)} onClick={handleToggle}>
       <Icon size={24} />
       <span className="sr-only">Toggle theme</span>
     </button>

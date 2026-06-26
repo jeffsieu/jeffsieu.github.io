@@ -37,7 +37,7 @@ export default function BackToTopButton({ className }: { className?: string }) {
       <button
         className={clsx(
           borderedButtonClassName,
-          'flex p-2 gap-1 items-center text-sm font-semibold',
+          'flex p-3 gap-1 items-center text-sm font-semibold',
           className,
         )}
         disabled={!shouldShowButton}
