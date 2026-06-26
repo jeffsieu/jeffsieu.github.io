@@ -20,6 +20,9 @@
 # production
 /build
 
+# lock files (use bun)
+package-lock.json
+
 # misc
 .DS_Store
 *.pem
