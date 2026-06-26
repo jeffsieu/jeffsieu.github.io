@@ -91,8 +91,38 @@ export default function Home() {
             />
             <div className="flex flex-col relative z-10">
               <div className="-rotate-2">
-                <h1 className="text-6xl sm:text-8xl font-extrabold tracking-[-0.03em] leading-[0.95]">
-                  Hi, I&apos;m Jeff
+                <h1
+                  className="text-6xl sm:text-8xl font-extrabold tracking-[-0.03em] leading-[0.95] relative z-10"
+                  aria-label="Hi, I'm Jeff"
+                >
+                  Hi
+                  <svg
+                    width="0.6em"
+                    height="1em"
+                    viewBox="-1 0 10 20"
+                    className="inline-block mx-1 align-middle mb-2"
+                    aria-hidden="true"
+                  >
+                    <line
+                      x1="5"
+                      y1="2"
+                      x2="0"
+                      y2="18"
+                      className="stroke-amber-500 dark:stroke-amber-400"
+                      strokeWidth="1.5"
+                      strokeLinecap="square"
+                    />
+                    <line
+                      x1="8"
+                      y1="2"
+                      x2="3"
+                      y2="18"
+                      className="stroke-amber-500 dark:stroke-amber-400"
+                      strokeWidth="1.5"
+                      strokeLinecap="square"
+                    />
+                  </svg>
+                  I&apos;m Jeff
                 </h1>
                 <div className="bg-[#FFFDF5] dark:bg-neutral-800 border-4 border-black dark:border-white shadow-[4px_4px_0_0] shadow-black dark:shadow-white rounded px-6 py-3 mb-6 mr-2">
                   <p className="text-neutral-800 dark:text-neutral-100 text-lg sm:text-xl font-bold">
