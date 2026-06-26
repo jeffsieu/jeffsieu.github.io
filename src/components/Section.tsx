@@ -36,7 +36,7 @@ export default function Section<S extends PageSection>({
     <section className="flex flex-col gap-8 m-4 sm:m-8">
       <h2
         id={id}
-        className="text-5xl font-medium self-center scroll-mt-8 font-['Changa_One'] relative"
+        className="text-5xl font-medium self-center scroll-mt-8 font-display relative"
       >
         <span className={titleClassName}>{title}</span>
         {stars}

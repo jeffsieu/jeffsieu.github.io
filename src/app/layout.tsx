@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${poppins.variable} ${geistMono.variable} ${changaOne.variable} antialiased`}
+        className={`${poppins.variable} ${geistMono.variable} ${changaOne.variable} font-sans antialiased`}
       >
         <ThemeProvider enableSystem disableTransitionOnChange>
           {children}
