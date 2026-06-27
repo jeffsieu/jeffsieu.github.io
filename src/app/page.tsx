@@ -81,18 +81,18 @@ export default function Home() {
               height={72}
             />
           </MagneticStar>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-8 relative z-10 sm:-ml-16">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-8 relative sm:-ml-16 pointer-events-none">
             <Image
               alt="Logo"
-              className="border-4 border-black dark:border-white relative z-10 box-content rounded -rotate-2"
+              className="border-4 border-black dark:border-white relative box-content rounded -rotate-2 pointer-events-auto"
               src="/logo.svg"
               width={100}
               height={100}
             />
-            <div className="flex flex-col relative z-10">
+            <div className="flex flex-col relative">
               <div className="-rotate-2">
                 <h1
-                  className="text-6xl sm:text-8xl font-extrabold tracking-[-0.03em] leading-[0.95] relative z-10"
+                  className="text-6xl sm:text-8xl font-extrabold tracking-[-0.03em] leading-[0.95] relative pointer-events-auto"
                   aria-label="Hi, I'm Jeff"
                 >
                   Hi
@@ -124,13 +124,13 @@ export default function Home() {
                   </svg>
                   I&apos;m Jeff
                 </h1>
-                <div className="bg-[#FFFDF5] dark:bg-neutral-800 border-4 border-black dark:border-white shadow-[4px_4px_0_0] shadow-black dark:shadow-white rounded px-6 py-3 mb-6 mr-2">
+                <div className="bg-[#FFFDF5] dark:bg-neutral-800 border-4 border-black dark:border-white shadow-[4px_4px_0_0] shadow-black dark:shadow-white rounded px-6 py-3 mb-6 mr-2 pointer-events-auto">
                   <p className="text-neutral-800 dark:text-neutral-100 text-lg sm:text-xl font-bold">
                     I enjoy creating delightful web experiences.
                   </p>
                 </div>
               </div>
-              <nav className="flex flex-wrap gap-3 -rotate-2">
+              <nav className="flex flex-wrap gap-3 -rotate-2 *:pointer-events-auto">
                 {pageSections.map((navLink) => (
                   <NavLink key={navLink.id} href={`#${navLink.id}`} label={navLink.label} />
                 ))}
